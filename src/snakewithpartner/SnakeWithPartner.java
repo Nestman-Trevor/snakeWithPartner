@@ -15,7 +15,7 @@ public class SnakeWithPartner {
 
     String name;
     String instructions = "Welcome to Snake!\nVersion: 1.0\n"
-            + "The goal is to eat the food and not yourself./n"
+            + "The goal is to eat the food and not yourself.\n"
             + "Also, avoid trying to leave the area.";
 
     /**
@@ -34,7 +34,7 @@ public class SnakeWithPartner {
     }
 
     public void displayHelp() {
-        System.out.println("/nWelcome " + this.name + "\n");
+        System.out.println("\nWelcome " + this.name + "\n");
         System.out.println(this.instructions);
     }
 }
