@@ -8,8 +8,13 @@ package snakewithpartner;
 
 /**
  *
- * @author trevornestman
+ * @author jmarchello
  */
 public class Snake {
+    //current length of snake
+    int length = 3; //snake is 3 sections long at start of game
     
+    public void displaylength(){
+        System.out.println("Snake Length: " + length);
+    }
 }
