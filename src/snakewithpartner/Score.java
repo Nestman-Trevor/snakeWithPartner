@@ -18,4 +18,11 @@ public class Score {
     public void displayScore(){
         System.out.println("Score: " + score);
     }
+    
+    //Add to score
+    public int scoreAdd(){
+        score += 100;
+        
+        return score;
+    }
 }
