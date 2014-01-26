@@ -8,8 +8,14 @@ package snakewithpartner;
 
 /**
  *
- * @author trevornestman
+ * @author jmarchello
  */
 public class Score {
+    //Player's current score
+    int score = 0;
     
+    //diplay players score
+    public void displayScore(){
+        System.out.println("Score: " + score);
+    }
 }
