@@ -8,8 +8,14 @@ package snakewithpartner;
 
 /**
  *
- * @author trevornestman
+ * @author jmarchello
  */
 public class Food {
+    //Score value per food item collected by snake
+    int scoreValue = 100;
     
+    //Display score value per item collected
+    public void displayScoreValue(){
+        System.out.println("Each food item collected is worth " + scoreValue + "points.");
+    }
 }
