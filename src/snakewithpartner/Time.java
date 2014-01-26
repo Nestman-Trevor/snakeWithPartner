@@ -8,8 +8,15 @@ package snakewithpartner;
 
 /**
  *
- * @author trevornestman
+ * @author jmarchello
  */
 public class Time {
+    //Current timestamp in seconds
+    long timeStampSecs = System.currentTimeMillis() / 1000;
+    
+    //display timestamp in seconds
+    public void showTimeInSeconds(){
+        System.out.println("Time in Seconds: " + timeStampSecs);
+    }
     
 }
