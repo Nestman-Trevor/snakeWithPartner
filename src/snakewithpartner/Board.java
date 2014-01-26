@@ -8,8 +8,16 @@ package snakewithpartner;
 
 /**
  *
- * @author trevornestman
+ * @author jmarchello
  */
 public class Board {
+    //Height and Width of board in pixels
+    int height = 500;
+    int width = 500;
     
+    //Display board's height and width
+    public void displayBoardSize(){
+        System.out.println("The board is " + height + " pixels by " + width + "pixels");
+    }
 }
+
