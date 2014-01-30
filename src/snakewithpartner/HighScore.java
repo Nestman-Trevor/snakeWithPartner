@@ -81,14 +81,25 @@ public class HighScore {
     public void testHighScore() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your score: ");
-        userInput = input.next();
-        userScore = userInput.length();
-        char [] classy = userInput.toCharArray();
-        for (int i = 0; i < classy.length; i++) {
-            if (classy[i] == '0') {
-                
+//        userInput = input.next();
+        while (input.hasNext()){
+            if (input.hasNextDouble()){
+                userScore = input.nextDouble();
+                this.easyComputeHighScore(userScore);
+                return;
+            }
+            else{
+                System.out.println("Invalid input. Numbers only.");
+                return;
             }
         }
-        this.easyComputeHighScore(userScore);
+        
+//        userScore = userInput.length();
+//        char [] classy = userInput.toCharArray();
+//        for (int i = 0; i < classy.length; i++) {
+//            if (classy[i] == '0') {
+//                
+//            }
+//        }
     }
 }
