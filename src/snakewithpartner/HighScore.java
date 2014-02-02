@@ -81,7 +81,6 @@ public class HighScore {
     public void testHighScore() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your score: ");
-//        userInput = input.next();
         while (input.hasNext()){
             if (input.hasNextDouble()){
                 userScore = input.nextDouble();
