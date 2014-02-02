@@ -10,10 +10,20 @@ package snakewithpartner;
  *
  * @author jmarchello
  */
-public class Board {
+import java.awt.*;
+import javax.swing.*;
+
+public class Board extends JFrame{
     //Height and Width of board in pixels
-    int height = 500;
-    int width = 500;
+    int height = 400;
+    int width = 400;
+    
+    
+    public Board(){
+        super("Snake!");
+        setLayout(new FlowLayout());
+
+    }
     
     //Display board's height and width
     public void displayBoardSize(){

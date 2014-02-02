@@ -6,6 +6,8 @@
 package snakewithpartner;
 
 import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -22,8 +24,16 @@ public class SnakeWithPartner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        HighScore myScore = new HighScore();
-        myScore.testHighScore();
+        Board snakeBoard = new Board();
+        snakeBoard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        snakeBoard.setSize(snakeBoard.height,snakeBoard.width);
+        snakeBoard.setVisible(true);
+        
+        drawingComponent DC = new drawingComponent();
+        snakeBoard.add(DC);
+        
+//        HighScore myScore = new HighScore();
+//        myScore.testHighScore();
     }
 
     public void getName() {
