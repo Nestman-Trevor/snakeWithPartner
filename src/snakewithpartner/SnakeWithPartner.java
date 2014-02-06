@@ -22,8 +22,10 @@ public class SnakeWithPartner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        HighScore myScore = new HighScore();
-        myScore.testHighScore();
+//        HighScore myScore = new HighScore();
+//        myScore.testHighScore();
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.getPlayerSelection();
     }
 
     public void getName() {
@@ -36,4 +38,5 @@ public class SnakeWithPartner {
         System.out.println("\nWelcome " + this.name + "\n");
         System.out.println(this.instructions);
     }
+    
 }

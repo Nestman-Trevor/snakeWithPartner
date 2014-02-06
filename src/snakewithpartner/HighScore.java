@@ -45,7 +45,7 @@ public class HighScore {
                 System.out.println("No high score");
                 return;
             }
-            //sets temperary array
+            //sets temporary array
             for (int r = 0; r < 10; r++) {
                 tempArray[r] = easyHighScoreList[r];
             }
@@ -53,7 +53,9 @@ public class HighScore {
             for (int i = 0; i < 10; i++) {
                 if (score >= easyHighScoreList[i]) {
                     tempArray[i] = score;
+                    //checks to see if it's not at the last score
                     if (i != 9) {
+                        //sets the internal control variable to one more than the other control variable
                         for (int x = i + 1; x < 10; x++) {
                             tempArray[x] = easyHighScoreList[x - 1];
                         }
@@ -63,6 +65,7 @@ public class HighScore {
                     tempArray[i] = easyHighScoreList[i];
                 }
             }
+            //copies the temporary array back to the easy high score list
             for (int r = 0; r < 10; r++) {
                 easyHighScoreList[r] = tempArray[r];
             }
@@ -93,13 +96,5 @@ public class HighScore {
                 return;
             }
         }
-        
-//        userScore = userInput.length();
-//        char [] classy = userInput.toCharArray();
-//        for (int i = 0; i < classy.length; i++) {
-//            if (classy[i] == '0') {
-//                
-//            }
-//        }
     }
 }
