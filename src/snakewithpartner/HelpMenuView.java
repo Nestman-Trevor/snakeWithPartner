@@ -55,8 +55,4 @@ public class HelpMenuView {
             }
         } while (!selection.equals("0"));
     }
-
-    private void proccessPlayerSelection(int selection) {
-        System.out.println(selection);
-    }
 }
