@@ -26,7 +26,8 @@ public class SnakeWithPartner {
 //        myScore.testHighScore();
 //        PlayMenuView playMenu = new PlayMenuView();
 //        playMenu.getPlayerSelection();
-        
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.getPlayerSelection();
     }
 
     public void getName() {
