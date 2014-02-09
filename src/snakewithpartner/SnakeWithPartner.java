@@ -24,8 +24,8 @@ public class SnakeWithPartner {
     public static void main(String[] args) {
 //        HighScore myScore = new HighScore();
 //        myScore.testHighScore();
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.getPlayerSelection();
+        PlayMenuView playMenu = new PlayMenuView();
+        playMenu.getPlayerSelection();
     }
 
     public void getName() {
