@@ -22,12 +22,10 @@ public class SnakeWithPartner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        HighScore myScore = new HighScore();
-//        myScore.testHighScore();
-//        PlayMenuView playMenu = new PlayMenuView();
-//        playMenu.getPlayerSelection();
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.getPlayerSelection();
+//        MainMenuView mainMenu = new MainMenuView();
+//        mainMenu.getPlayerSelection();
+        snakeControlView snakeControl = new snakeControlView();
+        snakeControl.displayInput();
     }
 
     public void getName() {
