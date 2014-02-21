@@ -83,7 +83,10 @@ public class HighScore {
             switch (difficulty) {
                 //Easy difficulty sort
                 case 1:
-                    System.arraycopy(easyHighScores, 0, highScores, 0, highScores.length);
+                    for (int k = 0; k < easyHighScores.length; k++) {
+                        highScores[k][0] = easyHighScores[k][0];
+                        highScores[k][1] = easyHighScores[k][1];
+                    }
                     break;
                 //Medium difficulty sort
                 case 2:
@@ -94,7 +97,10 @@ public class HighScore {
                     break;
                 //Hard difficulty sort
                 case 3:
-                    System.arraycopy(hardHighScores, 0, highScores, 0, highScores.length);
+                    for (int k = 0; k < hardHighScores.length; k++) {
+                        highScores[k][0] = hardHighScores[k][0];
+                        highScores[k][1] = hardHighScores[k][1];
+                    }
                     break;
                 default:
                     System.out.println("No difficulty");
@@ -132,7 +138,10 @@ public class HighScore {
 //            }
             switch (difficulty) {
                 case 1:
-                    System.arraycopy(newHighScores, 0, easyHighScores, 0, 10);
+                    for (int k = 0; k < (newHighScores.length - 1); k++) {
+                        easyHighScores[k][0] = newHighScores[k][0];
+                        easyHighScores[k][1] = newHighScores[k][1];
+                    }
                     this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
                     break;
                 case 2:
@@ -143,7 +152,10 @@ public class HighScore {
                     this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
                     break;
                 case 3:
-                    System.arraycopy(newHighScores, 0, hardHighScores, 0, 10);
+                    for (int k = 0; k < (newHighScores.length - 1); k++) {
+                        hardHighScores[k][0] = newHighScores[k][0];
+                        hardHighScores[k][1] = newHighScores[k][1];
+                    }
                     this.displayHighScoreInfo(hardHighScores, "Hard High Scores");
                     break;
                 default:
