@@ -33,15 +33,15 @@ public class HighScore {
     };
     String mediumHighScores[][] = {
         {"Simba", "10000"},
-        {"Jake", "2"},
-        {"Nalla's Ex", "300"},
-        {"Pigs", "4000"},
-        {"Tim", "500"},
-        {"Sim", "600"},
-        {"Kim", "700"},
-        {"myRim", "80"},
-        {"Dim", "9000"},
-        {"brainDead", "10"}
+        {"Jake", "20000"},
+        {"Nalla's Ex", "30000"},
+        {"Pigs", "40000"},
+        {"Tim", "50000"},
+        {"Sim", "60000"},
+        {"Kim", "70000"},
+        {"myRim", "80000"},
+        {"Dim", "90000"},
+        {"brainDead", "100000"}
     };
     String hardHighScores[][] = {
         {"H1N1", "10000"},
@@ -116,14 +116,15 @@ public class HighScore {
             }
             newHighScores[10][0] = name;
             newHighScores[10][1] = Integer.toString(score);
-            for (i = 1; i < newHighScores.length; i++) {
-                temp = parseInt(newHighScores[i][1]);
-                tempName = newHighScores[i][0];
-                for (j = i - 1; (j >= 0) && (parseInt(newHighScores[j][1]) < temp); j--) {
-                    newHighScores[j + 1] = newHighScores[j];
+            for (j = 1; j < newHighScores.length; j++) {
+                temp = parseInt(newHighScores[j][1]);
+                tempName = newHighScores[j][0];
+                for (i = j - 1;(i >= 0) && (parseInt(newHighScores[i][1]) < temp); i--) {
+                    newHighScores[i + 1][1] = newHighScores[i][1];
+                    newHighScores[i + 1][0] = newHighScores[i][0];
                 }
-                newHighScores[j + 1][1] = Integer.toString(temp);
-                newHighScores[j + 1][0] = tempName;
+                newHighScores[i + 1][1] = Integer.toString(temp);
+                newHighScores[i + 1][0] = tempName;
             }
 
 //            for(int k = 0;k < 10;k++){
