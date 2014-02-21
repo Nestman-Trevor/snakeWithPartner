@@ -75,23 +75,26 @@ public class HighScore {
     public void addToHighScores(String name, int score, int difficulty) {
         int i, j, temp;
         String tempName;
-        String[][] newHighScores = new String[10][2];
+        String[][] newHighScores = new String[11][2];
         boolean isHighScore = false;
         String[][] highScores;
-        highScores = new String[11][2];
+        highScores = new String[10][2];
         if (isValidScore(score)) {
             switch (difficulty) {
                 //Easy difficulty sort
                 case 1:
-                    System.arraycopy( easyHighScores, 0, highScores, 0, highScores.length);
+                    System.arraycopy(easyHighScores, 0, highScores, 0, highScores.length);
                     break;
                 //Medium difficulty sort
                 case 2:
-                    System.arraycopy( mediumHighScores, 0, highScores, 0, highScores.length);
+                    for (int k = 0; k < mediumHighScores.length; k++) {
+                        highScores[k][0] = mediumHighScores[k][0];
+                        highScores[k][1] = mediumHighScores[k][1];
+                    }
                     break;
                 //Hard difficulty sort
                 case 3:
-                    System.arraycopy( hardHighScores, 0, highScores, 0, highScores.length);
+                    System.arraycopy(hardHighScores, 0, highScores, 0, highScores.length);
                     break;
                 default:
                     System.out.println("No difficulty");
@@ -99,36 +102,43 @@ public class HighScore {
             }
             for (int t = 0; t < highScores.length; t++) {
                 temp = parseInt(highScores[t][1]);
-                if(score >= temp){
+                if (score >= temp) {
                     isHighScore = true;
                 }
             }
-            if(!isHighScore){
+            if (!isHighScore) {
                 System.out.println("Not a high score.");
                 return;
             }
-            highScores[10][0] = name;
-            highScores[10][1] = Integer.toString(score);
-            for (i = 1; i < highScores.length; i++) {
-                temp = parseInt(highScores[i][1]);
-                tempName = highScores[i][0];
-                for(j = i-1;(j >= 0)&&(parseInt(highScores[j][1])<temp);j--){
-                    highScores[j+1] = highScores[j];
-                }
-                highScores[j+1][1] = Integer.toString(temp);
-                highScores[j+1][0] = tempName;
+            for (int k = 0; k < highScores.length; k++) {
+                newHighScores[k][0] = highScores[k][0];
+                newHighScores[k][1] = highScores[k][1];
             }
-            
+            newHighScores[10][0] = name;
+            newHighScores[10][1] = Integer.toString(score);
+            for (i = 1; i < newHighScores.length; i++) {
+                temp = parseInt(newHighScores[i][1]);
+                tempName = newHighScores[i][0];
+                for (j = i - 1; (j >= 0) && (parseInt(newHighScores[j][1]) < temp); j--) {
+                    newHighScores[j + 1] = newHighScores[j];
+                }
+                newHighScores[j + 1][1] = Integer.toString(temp);
+                newHighScores[j + 1][0] = tempName;
+            }
+
 //            for(int k = 0;k < 10;k++){
 //                newHighScores[k] = highScores[k];
 //            }
-            switch(difficulty){
+            switch (difficulty) {
                 case 1:
                     System.arraycopy(newHighScores, 0, easyHighScores, 0, 10);
                     this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
                     break;
                 case 2:
-                    System.arraycopy(newHighScores, 0, mediumHighScores, 0, 10);
+                    for (int k = 0; k < (newHighScores.length - 1); k++) {
+                        mediumHighScores[k][0] = newHighScores[k][0];
+                        mediumHighScores[k][1] = newHighScores[k][1];
+                    }
                     this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
                     break;
                 case 3:
