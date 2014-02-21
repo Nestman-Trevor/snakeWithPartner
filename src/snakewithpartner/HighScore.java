@@ -5,7 +5,9 @@
  */
 package snakewithpartner;
 
+import static java.lang.Integer.parseInt;
 import java.util.Scanner;
+import java.lang.*;
 
 /**
  *
@@ -15,167 +17,134 @@ public class HighScore {
 
     //High score title
     String highScoreTitle = "High Scores";
+
     //Declares the array of High Scores
-    //These will be moved to a file soon to record and keep track of high scores
-    int[] easyHighScoreList = {1000, 900, 800, 700, 600, 500, 400, 300, 200, 100};
-    int mediumHighScoreList[] = {1000, 900, 800, 700, 600, 500, 400, 300, 200, 100};
-    int hardHighScoreList[] = {1000, 900, 800, 700, 600, 500, 400, 300, 200, 100};
-    //Creates an array that is used to copy over high scores in temporary storage
-    int tempArray[] = new int[10];
-    
-    double userScore;
+    String easyHighScores[][] = {
+        {"Josh", "10000"},
+        {"O'bummer", "2"},
+        {"aDeadBaby", "300"},
+        {"10bleadingCaterpillers", "4000"},
+        {"aGoodMan", "500"},
+        {"MyPuppy", "600"},
+        {"aPossummm", "700"},
+        {"miTio", "80"},
+        {"Air", "9000"},
+        {"BadPerson", "10"}
+    };
+    String mediumHighScores[][] = {
+        {"Simba", "10000"},
+        {"Jake", "2"},
+        {"Nalla's Ex", "300"},
+        {"Pigs", "4000"},
+        {"Tim", "500"},
+        {"Sim", "600"},
+        {"Kim", "700"},
+        {"myRim", "80"},
+        {"Dim", "9000"},
+        {"brainDead", "10"}
+    };
+    String hardHighScores[][] = {
+        {"H1N1", "10000"},
+        {"CommonCold", "2"},
+        {"BirdFlu", "300"},
+        {"Ebola", "4000"},
+        {"OldAge", "500"},
+        {"Spiders", "600"},
+        {"Josh", "700"},
+        {"2Hard4Me", "80"},
+        {"Potassium", "9000"},
+        {"where'sTheAnyKey?", "10"}
+    };
+
+    String num = "12";
+    //This is the score that the player got that will be sent to the array of high scores
+    int userScore;
+    //This variable will be stored elsewhere, but will be used to measure the difficulty
+    int difficulty;
     String userInput;
 
     //Display everything in High Score
-    public void displayHighScoreInfo(int[] highScoreList, String highScoreTitle) {
+    public void displayHighScoreInfo(String[][] highScoreList, String highScoreTitle) {
         System.out.println(highScoreTitle + "\n");
-        for (int i = 1; i <= 10; i++) {
-            System.out.println(i + ". " + highScoreList[i - 1]);
+        for (int i = 0; i < highScoreList.length; i++) {
+            System.out.println((i + 1) + ". " + highScoreList[i][0] + " " + highScoreList[i][1]);
         }
     }
-    
+
+    //Sorts high score list
+    public void addToHighScores(String name, int score, int difficulty) {
+        int i, j, temp;
+        String tempName;
+        String[][] newHighScores = null;
+        boolean isHighScore = false;
+        String[][] highScores;
+        if (isValidScore(score)) {
+            switch (difficulty) {
+                //Easy difficulty sort
+                case 1:
+                    highScores = easyHighScores;
+                    break;
+                //Medium difficulty sort
+                case 2:
+                    highScores = mediumHighScores;
+                    break;
+                //Hard difficulty sort
+                case 3:
+                    highScores = hardHighScores;
+                    break;
+                default:
+                    System.out.println("No difficulty");
+                    return;
+            }
+            for (int t = 0; t < highScores.length; t++) {
+                temp = parseInt(highScores[t][1]);
+                if(score >= temp){
+                    isHighScore = true;
+                }
+            }
+            if(!isHighScore){
+                System.out.println("Not a high score.");
+                return;
+            }
+            highScores[10][0] = name;
+            highScores[10][1] = Integer.toString(score);
+            for (i = 1; i < highScores.length; i++) {
+                temp = parseInt(highScores[i][1]);
+                tempName = highScores[i][0];
+                for(j = i-1;(j >= 0)&&(parseInt(highScores[j][1])<temp);j--){
+                    highScores[j+1] = highScores[j];
+                }
+                highScores[j+1][1] = Integer.toString(temp);
+                highScores[j+1][0] = tempName;
+            }
+            for(int k = 0;k < 10;k++){
+                newHighScores[k] = highScores[k];
+            }
+            switch(difficulty){
+                case 1:
+                    easyHighScores = newHighScores;
+                    this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
+                    break;
+                case 2:
+                    mediumHighScores = newHighScores;
+                    this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
+                    break;
+                case 3:
+                    hardHighScores = newHighScores;
+                    this.displayHighScoreInfo(hardHighScores, "Hard High Scores");
+                    break;
+                default:
+                    System.out.println("Invalid difficulty");
+                    return;
+            }
+        } else {
+            System.out.println("Not a valid score.");
+        }
+    }
+
     private boolean isValidScore(int score) {
         boolean isValid = (score >= 0);
         return isValid;
     }
-    /*
-    *This function will attempt to place the player's score within the easy high score list
-    *If the score isn't high enough,it won't be put into the list
-    *If the scores are exactly the same the most recent score will bump down the other score.
-    */
-    public void easyComputeHighScore(double userScore) {
-        int score = (int) userScore;
-        if (isValidScore(score)) {
-            if (score < easyHighScoreList[9]) {
-                System.out.println("No high score");
-                return;
-            }
-            //sets temporary array
-            for (int r = 0; r < 10; r++) {
-                tempArray[r] = easyHighScoreList[r];
-            }
-            //creates new array with scores moved and lowest score dropped
-            for (int i = 0; i < 10; i++) {
-                if (score >= easyHighScoreList[i]) {
-                    tempArray[i] = score;
-                    //checks to see if it's not at the last score
-                    if (i != 9) {
-                        //sets the internal control variable to one more than the other control variable
-                        for (int x = i + 1; x < 10; x++) {
-                            tempArray[x] = easyHighScoreList[x - 1];
-                        }
-                    }
-                    break;
-                } else {
-                    tempArray[i] = easyHighScoreList[i];
-                }
-            }
-            //copies the temporary array back to the easy high score list
-            for (int r = 0; r < 10; r++) {
-                easyHighScoreList[r] = tempArray[r];
-            }
-            displayHighScoreInfo(easyHighScoreList, "Easy High Score List");
-        } else {
-            System.out.println("NOT A \'VALID\' SCORE");
-        }
-    }
-    /*
-    *This function will attempt to place the player's score within the medium high score list
-    *If the score isn't high enough,it won't be put into the list
-    *If the scores are exactly the same the most recent score will bump down the other score.
-    */
-    public void mediumComputeHighScore(double userScore) {
-        int score = (int) userScore;
-        if (isValidScore(score)) {
-            if (score < mediumHighScoreList[9]) {
-                System.out.println("No high score");
-                return;
-            }
-            //sets temporary array
-            for (int r = 0; r < 10; r++) {
-                tempArray[r] = mediumHighScoreList[r];
-            }
-            //creates new array with scores moved and lowest score dropped
-            for (int i = 0; i < 10; i++) {
-                if (score >= mediumHighScoreList[i]) {
-                    tempArray[i] = score;
-                    //checks to see if it's not at the last score
-                    if (i != 9) {
-                        //sets the internal control variable to one more than the other control variable
-                        for (int x = i + 1; x < 10; x++) {
-                            tempArray[x] = mediumHighScoreList[x - 1];
-                        }
-                    }
-                    break;
-                } else {
-                    tempArray[i] = mediumHighScoreList[i];
-                }
-            }
-            //copies the temporary array back to the medium high score list
-            for (int r = 0; r < 10; r++) {
-                mediumHighScoreList[r] = tempArray[r];
-            }
-            displayHighScoreInfo(mediumHighScoreList, "Medium High Score List");
-        } else {
-            System.out.println("NOT A \'VALID\' SCORE");
-        }
-    }
-    /*
-    *This function will attempt to place the player's score within the hard high score list
-    *If the score isn't high enough,it won't be put into the list
-    *If the scores are exactly the same the most recent score will bump down the other score.
-    */
-    public void hardComputeHighScore(double userScore) {
-        int score = (int) userScore;
-        if (isValidScore(score)) {
-            if (score < hardHighScoreList[9]) {
-                System.out.println("No high score");
-                return;
-            }
-            //sets temporary array
-            for (int r = 0; r < 10; r++) {
-                tempArray[r] = hardHighScoreList[r];
-            }
-            //creates new array with scores moved and lowest score dropped
-            for (int i = 0; i < 10; i++) {
-                if (score >= hardHighScoreList[i]) {
-                    tempArray[i] = score;
-                    //checks to see if it's not at the last score
-                    if (i != 9) {
-                        //sets the internal control variable to one more than the other control variable
-                        for (int x = i + 1; x < 10; x++) {
-                            tempArray[x] = hardHighScoreList[x - 1];
-                        }
-                    }
-                    break;
-                } else {
-                    tempArray[i] = hardHighScoreList[i];
-                }
-            }
-            //copies the temporary array back to the hard high score list
-            for (int r = 0; r < 10; r++) {
-                hardHighScoreList[r] = tempArray[r];
-            }
-            displayHighScoreInfo(hardHighScoreList, "Hard High Score List");
-        } else {
-            System.out.println("NOT A \'VALID\' SCORE");
-        }
-    }
-    
-    //Used to test the high score list and when a new score is entered.
-    public void testHighScore() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter your score: ");
-        while (input.hasNext()){
-            if (input.hasNextDouble()){
-                userScore = input.nextDouble();
-                this.easyComputeHighScore(userScore);
-                return;
-            }
-            else{
-                System.out.println("Invalid input. Numbers only.");
-                return;
-            }
-        }
-    }
+
 }

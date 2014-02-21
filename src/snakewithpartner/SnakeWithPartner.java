@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class SnakeWithPartner {
     double finalScore;
-    String name;
+    
     String instructions = "Welcome to Snake!\nVersion: 1.0\n"
             + "The goal is to eat the food and not yourself.\n"
             + "Also, avoid trying to leave the area.";
@@ -24,8 +24,17 @@ public class SnakeWithPartner {
     public static void main(String[] args) {
 //        MainMenuView mainMenu = new MainMenuView();
 //        mainMenu.getPlayerSelection();
-        snakeControlView snakeControl = new snakeControlView();
-        snakeControl.displayInput();
+//        snakeControlView snakeControl = new snakeControlView();
+//        snakeControl.displayInput();
+        Scanner input = new Scanner(System.in);
+        System.out.println("What's your name: ");
+        String name = input.next();
+        System.out.println("Enter your score: ");
+        int score = input.nextInt();
+        System.out.println("Enter the difficulty (1, 2, or 3): ");
+        int difficulty = input.nextInt();
+        HighScore highScore = new HighScore();
+        highScore.addToHighScores(name, score, difficulty);
     }
 
     public void getName() {
