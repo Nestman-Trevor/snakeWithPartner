@@ -75,22 +75,23 @@ public class HighScore {
     public void addToHighScores(String name, int score, int difficulty) {
         int i, j, temp;
         String tempName;
-        String[][] newHighScores = null;
+        String[][] newHighScores = new String[10][2];
         boolean isHighScore = false;
         String[][] highScores;
+        highScores = new String[11][2];
         if (isValidScore(score)) {
             switch (difficulty) {
                 //Easy difficulty sort
                 case 1:
-                    highScores = easyHighScores;
+                    System.arraycopy( easyHighScores, 0, highScores, 0, highScores.length);
                     break;
                 //Medium difficulty sort
                 case 2:
-                    highScores = mediumHighScores;
+                    System.arraycopy( mediumHighScores, 0, highScores, 0, highScores.length);
                     break;
                 //Hard difficulty sort
                 case 3:
-                    highScores = hardHighScores;
+                    System.arraycopy( hardHighScores, 0, highScores, 0, highScores.length);
                     break;
                 default:
                     System.out.println("No difficulty");
@@ -117,20 +118,21 @@ public class HighScore {
                 highScores[j+1][1] = Integer.toString(temp);
                 highScores[j+1][0] = tempName;
             }
-            for(int k = 0;k < 10;k++){
-                newHighScores[k] = highScores[k];
-            }
+            
+//            for(int k = 0;k < 10;k++){
+//                newHighScores[k] = highScores[k];
+//            }
             switch(difficulty){
                 case 1:
-                    easyHighScores = newHighScores;
+                    System.arraycopy(newHighScores, 0, easyHighScores, 0, 10);
                     this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
                     break;
                 case 2:
-                    mediumHighScores = newHighScores;
+                    System.arraycopy(newHighScores, 0, mediumHighScores, 0, 10);
                     this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
                     break;
                 case 3:
-                    hardHighScores = newHighScores;
+                    System.arraycopy(newHighScores, 0, hardHighScores, 0, 10);
                     this.displayHighScoreInfo(hardHighScores, "Hard High Scores");
                     break;
                 default:
