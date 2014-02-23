@@ -100,12 +100,9 @@ public class HighScore {
                     System.out.println("No difficulty");
                     return;
             }
-            for (int t = 0; t < highScores.length; t++) {
-                temp = parseInt(highScores[t][1]);
-                if (score >= temp) {
-                    isHighScore = true;
-                }
-            }
+            
+            isHighScore = isHighScore(highScores, score);
+            
             if (!isHighScore) {
                 System.out.println("Not a high score.");
                 return;
@@ -126,9 +123,6 @@ public class HighScore {
                 newHighScores[j + 1][0] = tempName;
             }
 
-//            for(int k = 0;k < 10;k++){
-//                newHighScores[k] = highScores[k];
-//            }
             switch (difficulty) {
                 case 1:
                     System.arraycopy(newHighScores, 0, easyHighScores, 0, 10);
@@ -157,6 +151,17 @@ public class HighScore {
     private boolean isValidScore(int score) {
         boolean isValid = (score >= 0);
         return isValid;
+    }
+
+    private boolean isHighScore(String[][] highScores, int score) {
+        boolean isHighScore = false;
+        for (String[] hScore : highScores) {
+            int hScoreNumber = parseInt(hScore[1]);
+            if (score >= hScoreNumber) {
+                isHighScore = true;
+            }
+        }
+        return isHighScore;
     }
 
 }
