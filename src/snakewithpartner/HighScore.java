@@ -33,15 +33,15 @@ public class HighScore {
     };
     String mediumHighScores[][] = {
         {"Simba", "10000"},
-        {"Jake", "2"},
-        {"Nalla's Ex", "300"},
-        {"Pigs", "4000"},
-        {"Tim", "500"},
-        {"Sim", "600"},
-        {"Kim", "700"},
-        {"myRim", "80"},
-        {"Dim", "9000"},
-        {"brainDead", "10"}
+        {"Jake", "20000"},
+        {"Nalla's Ex", "30000"},
+        {"Pigs", "40000"},
+        {"Tim", "50000"},
+        {"Sim", "60000"},
+        {"Kim", "70000"},
+        {"myRim", "80000"},
+        {"Dim", "90000"},
+        {"brainDead", "100000"}
     };
     String hardHighScores[][] = {
         {"H1N1", "10000"},
@@ -83,7 +83,10 @@ public class HighScore {
             switch (difficulty) {
                 //Easy difficulty sort
                 case 1:
-                    System.arraycopy(easyHighScores, 0, highScores, 0, highScores.length);
+                    for (int k = 0; k < easyHighScores.length; k++) {
+                        highScores[k][0] = easyHighScores[k][0];
+                        highScores[k][1] = easyHighScores[k][1];
+                    }
                     break;
                 //Medium difficulty sort
                 case 2:
@@ -94,7 +97,10 @@ public class HighScore {
                     break;
                 //Hard difficulty sort
                 case 3:
-                    System.arraycopy(hardHighScores, 0, highScores, 0, highScores.length);
+                    for (int k = 0; k < hardHighScores.length; k++) {
+                        highScores[k][0] = hardHighScores[k][0];
+                        highScores[k][1] = hardHighScores[k][1];
+                    }
                     break;
                 default:
                     System.out.println("No difficulty");
@@ -113,19 +119,23 @@ public class HighScore {
             }
             newHighScores[10][0] = name;
             newHighScores[10][1] = Integer.toString(score);
-            for (i = 1; i < newHighScores.length; i++) {
-                temp = parseInt(newHighScores[i][1]);
-                tempName = newHighScores[i][0];
-                for (j = i - 1; (j >= 0) && (parseInt(newHighScores[j][1]) < temp); j--) {
-                    newHighScores[j + 1] = newHighScores[j];
+            for (j = 1; j < newHighScores.length; j++) {
+                temp = parseInt(newHighScores[j][1]);
+                tempName = newHighScores[j][0];
+                for (i = j - 1;(i >= 0) && (parseInt(newHighScores[i][1]) < temp); i--) {
+                    newHighScores[i + 1][1] = newHighScores[i][1];
+                    newHighScores[i + 1][0] = newHighScores[i][0];
                 }
-                newHighScores[j + 1][1] = Integer.toString(temp);
-                newHighScores[j + 1][0] = tempName;
+                newHighScores[i + 1][1] = Integer.toString(temp);
+                newHighScores[i + 1][0] = tempName;
             }
 
             switch (difficulty) {
                 case 1:
-                    System.arraycopy(newHighScores, 0, easyHighScores, 0, 10);
+                    for (int k = 0; k < (newHighScores.length - 1); k++) {
+                        easyHighScores[k][0] = newHighScores[k][0];
+                        easyHighScores[k][1] = newHighScores[k][1];
+                    }
                     this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
                     break;
                 case 2:
@@ -136,7 +146,10 @@ public class HighScore {
                     this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
                     break;
                 case 3:
-                    System.arraycopy(newHighScores, 0, hardHighScores, 0, 10);
+                    for (int k = 0; k < (newHighScores.length - 1); k++) {
+                        hardHighScores[k][0] = newHighScores[k][0];
+                        hardHighScores[k][1] = newHighScores[k][1];
+                    }
                     this.displayHighScoreInfo(hardHighScores, "Hard High Scores");
                     break;
                 default:
