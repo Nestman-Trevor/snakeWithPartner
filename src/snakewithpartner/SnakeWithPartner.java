@@ -15,7 +15,7 @@ public class SnakeWithPartner {
 
     double finalScore;
     
-    
+    public static String name;
 
     String instructions = "Welcome to Snake!\nVersion: 1.0\n"
             + "The goal is to eat the food and not yourself.\n"
@@ -32,7 +32,7 @@ public class SnakeWithPartner {
 
         Scanner input = new Scanner(System.in);
         System.out.println("What's your name: ");
-        String name = input.next();
+        name = input.next();
         System.out.println("Enter your score: ");
         int score = input.nextInt();
         System.out.println("Enter the difficulty (1, 2, or 3): ");

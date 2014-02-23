@@ -21,15 +21,15 @@ public class HighScore {
     //Declares the array of High Scores
     String easyHighScores[][] = {
         {"Josh", "10000"},
-        {"O'bummer", "2"},
-        {"aDeadBaby", "300"},
-        {"10bleadingCaterpillers", "4000"},
+        {"Trevor", "2"},
+        {"Josh", "300"},
+        {"Erik", "4000"},
         {"aGoodMan", "500"},
         {"MyPuppy", "600"},
         {"aPossummm", "700"},
-        {"miTio", "80"},
+        {"Tim", "80"},
         {"Air", "9000"},
-        {"BadPerson", "10"}
+        {"Trevor", "10"}
     };
     String mediumHighScores[][] = {
         {"Simba", "10000"},
@@ -106,9 +106,9 @@ public class HighScore {
                     System.out.println("No difficulty");
                     return;
             }
-            
+
             isHighScore = isHighScore(highScores, score);
-            
+
             if (!isHighScore) {
                 System.out.println("Not a high score.");
                 return;
@@ -122,7 +122,7 @@ public class HighScore {
             for (j = 1; j < newHighScores.length; j++) {
                 temp = parseInt(newHighScores[j][1]);
                 tempName = newHighScores[j][0];
-                for (i = j - 1;(i >= 0) && (parseInt(newHighScores[i][1]) < temp); i--) {
+                for (i = j - 1; (i >= 0) && (parseInt(newHighScores[i][1]) < temp); i--) {
                     newHighScores[i + 1][1] = newHighScores[i][1];
                     newHighScores[i + 1][0] = newHighScores[i][0];
                 }
@@ -159,6 +159,15 @@ public class HighScore {
         } else {
             System.out.println("Not a valid score.");
         }
+
+        //This next part is to test the displayHighScoreWithName() function
+        Scanner input = new Scanner(System.in);
+        System.out.println("Do you want to view the high score's with your name? (\'y\' or \'n\'): ");
+        if (input.hasNext("y")) {
+            displayHighScoreWithName(difficulty);
+        } else {
+            System.out.println("Thanks anyways!");
+        }
     }
 
     private boolean isValidScore(int score) {
@@ -177,4 +186,55 @@ public class HighScore {
         return isHighScore;
     }
 
+    public void displayHighScoreWithName(int difficulty) {
+        String[][] highScores = returnTempList(difficulty);
+        int level = 0;
+        for(String list[]: highScores){
+            if(SnakeWithPartner.name.equals(list[0])){
+                highScores[level][0] = "*** " + list[0];
+            }
+            level++;
+        }
+        this.displayHighScoreInfo(highScores, this.difficultyLevelString(difficulty));
+    }
+
+    private String[][] returnTempList(int difficulty) {
+        String[][] tempList;
+        switch (difficulty) {
+            case 1:
+                tempList = easyHighScores;
+                break;
+            case 2:
+                tempList = mediumHighScores;
+                break;
+            case 3:
+                tempList = hardHighScores;
+                break;
+            default:
+                tempList = null;
+                System.out.println("Invalid difficulty");
+                break;
+        }
+        return tempList;
+    }
+    
+    private String difficultyLevelString(int difficulty){
+        String levelDifficulty;
+        switch (difficulty) {
+            case 1:
+                levelDifficulty = "Easy";
+                break;
+            case 2:
+                levelDifficulty = "Medium";
+                break;
+            case 3:
+                levelDifficulty = "Hard";
+                break;
+            default:
+                levelDifficulty = null;
+                System.out.println("Invalid difficulty");
+                break;
+        }
+        return levelDifficulty;
+    }
 }
