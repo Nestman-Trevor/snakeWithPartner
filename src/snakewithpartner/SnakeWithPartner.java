@@ -29,16 +29,18 @@ public class SnakeWithPartner {
 //        mainMenu.getPlayerSelection();
 //        snakeControlView snakeControl = new snakeControlView();
 //        snakeControl.displayInput();
-
-        Scanner input = new Scanner(System.in);
-        System.out.println("What's your name: ");
-        name = input.next();
-        System.out.println("Enter your score: ");
-        int score = input.nextInt();
-        System.out.println("Enter the difficulty (1, 2, or 3): ");
-        int difficulty = input.nextInt();
-        HighScore highScore = new HighScore();
-        highScore.addToHighScores(name, score, difficulty);
+          
+//        Scanner input = new Scanner(System.in);
+//        System.out.println("What's your name: ");
+//        name = input.next();
+//        System.out.println("Enter your score: ");
+//        int score = input.nextInt();
+//        System.out.println("Enter the difficulty (1, 2, or 3): ");
+//        int difficulty = input.nextInt();
+//        HighScore highScore = new HighScore();
+//        highScore.addToHighScores(name, score, difficulty);
+          Board board = new Board();
+          board.displayBoard();
 
     }
 }
