@@ -11,7 +11,7 @@ package snakewithpartner;
  * @author jmarchello
  */
 
-import java.util.Scanner;
+
 
 public class Snake {
     //current length of snake

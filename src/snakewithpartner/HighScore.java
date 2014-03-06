@@ -5,21 +5,21 @@
  */
 package snakewithpartner;
 
+import java.io.Serializable;
 import static java.lang.Integer.parseInt;
 import java.util.Scanner;
-import java.lang.*;
 
 /**
  *
  * @author trevornestman
  */
-public class HighScore {
+public class HighScore implements Serializable{
 
     //High score title
-    String highScoreTitle = "High Scores";
+    private String highScoreTitle = "High Scores";
 
     //Declares the array of High Scores
-    String easyHighScores[][] = {
+    private String easyHighScores[][] = {
         {"Josh", "10000"},
         {"Trevor", "2"},
         {"Josh", "300"},
@@ -31,7 +31,7 @@ public class HighScore {
         {"Air", "9000"},
         {"Trevor", "10"}
     };
-    String mediumHighScores[][] = {
+    private String mediumHighScores[][] = {
         {"Simba", "10000"},
         {"Jake", "20000"},
         {"Nalla's Ex", "30000"},
@@ -43,7 +43,7 @@ public class HighScore {
         {"Dim", "90000"},
         {"brainDead", "100000"}
     };
-    String hardHighScores[][] = {
+    private String hardHighScores[][] = {
         {"H1N1", "10000"},
         {"CommonCold", "2"},
         {"BirdFlu", "300"},
@@ -56,12 +56,63 @@ public class HighScore {
         {"where'sTheAnyKey?", "10"}
     };
 
-    String num = "12";
-    //This is the score that the player got that will be sent to the array of high scores
-    int userScore;
-    //This variable will be stored elsewhere, but will be used to measure the difficulty
-    int difficulty;
-    String userInput;
+    private String num = "12";
+
+    private String userInput;
+
+    public HighScore(String userInput) {
+        this.userInput = userInput;
+    }
+
+    public String getHighScoreTitle() {
+        return highScoreTitle;
+    }
+
+    public void setHighScoreTitle(String highScoreTitle) {
+        this.highScoreTitle = highScoreTitle;
+    }
+
+    public String[][] getEasyHighScores() {
+        return easyHighScores;
+    }
+
+    public void setEasyHighScores(String[][] easyHighScores) {
+        this.easyHighScores = easyHighScores;
+    }
+
+    public String[][] getMediumHighScores() {
+        return mediumHighScores;
+    }
+
+    public void setMediumHighScores(String[][] mediumHighScores) {
+        this.mediumHighScores = mediumHighScores;
+    }
+
+    public String[][] getHardHighScores() {
+        return hardHighScores;
+    }
+
+    public void setHardHighScores(String[][] hardHighScores) {
+        this.hardHighScores = hardHighScores;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public String getUserInput() {
+        return userInput;
+    }
+
+    public void setUserInput(String userInput) {
+        this.userInput = userInput;
+    }
+    
+    
 
     //Display everything in High Score
     public void displayHighScoreInfo(String[][] highScoreList, String highScoreTitle) {
@@ -72,15 +123,15 @@ public class HighScore {
     }
 
     //Sorts high score list
-    public void addToHighScores(String name, int score, int difficulty) {
+    public void addToHighScores(Player player) {
         int i, j, temp;
         String tempName;
         String[][] newHighScores = new String[11][2];
         boolean isHighScore = false;
         String[][] highScores;
         highScores = new String[10][2];
-        if (isValidScore(score)) {
-            switch (difficulty) {
+        if (isValidScore(player.getScore())) {
+            switch (player.getDifficulty()) {
                 //Easy difficulty sort
                 case 1:
                     for (int k = 0; k < easyHighScores.length; k++) {
@@ -107,7 +158,7 @@ public class HighScore {
                     return;
             }
 
-            isHighScore = isHighScore(highScores, score);
+            isHighScore = isHighScore(highScores, player.getScore());
 
             if (!isHighScore) {
                 System.out.println("Not a high score.");
@@ -117,8 +168,8 @@ public class HighScore {
                 newHighScores[k][0] = highScores[k][0];
                 newHighScores[k][1] = highScores[k][1];
             }
-            newHighScores[10][0] = name;
-            newHighScores[10][1] = Integer.toString(score);
+            newHighScores[10][0] = player.getName();
+            newHighScores[10][1] = Integer.toString(player.getScore());
             for (j = 1; j < newHighScores.length; j++) {
                 temp = parseInt(newHighScores[j][1]);
                 tempName = newHighScores[j][0];
@@ -130,7 +181,7 @@ public class HighScore {
                 newHighScores[i + 1][0] = tempName;
             }
 
-            switch (difficulty) {
+            switch (player.getDifficulty()) {
                 case 1:
                     for (int k = 0; k < (newHighScores.length - 1); k++) {
                         easyHighScores[k][0] = newHighScores[k][0];
@@ -161,10 +212,10 @@ public class HighScore {
         }
 
         //This next part is to test the displayHighScoreWithName() function
-        Scanner input = new Scanner(System.in);
+        Scanner input = SnakeWithPartner.getInFile();
         System.out.println("Do you want to view the high score's with your name? (\'y\' or \'n\'): ");
         if (input.hasNext("y")) {
-            displayHighScoreWithName(difficulty);
+            displayHighScoreWithName(player);
         } else {
             System.out.println("Thanks anyways!");
         }
@@ -186,16 +237,16 @@ public class HighScore {
         return isHighScore;
     }
 
-    public void displayHighScoreWithName(int difficulty) {
-        String[][] highScores = returnTempList(difficulty);
+    public void displayHighScoreWithName(Player player) {
+        String[][] highScores = returnTempList(player.getDifficulty());
         int level = 0;
         for(String list[]: highScores){
-            if(SnakeWithPartner.name.equals(list[0])){
+            if(player.getName().equals(list[0])){
                 highScores[level][0] = "*** " + list[0];
             }
             level++;
         }
-        this.displayHighScoreInfo(highScores, this.difficultyLevelString(difficulty));
+        this.displayHighScoreInfo(highScores, this.difficultyLevelString(player.getDifficulty()));
     }
 
     private String[][] returnTempList(int difficulty) {

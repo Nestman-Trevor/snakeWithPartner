@@ -36,10 +36,9 @@ public class PlayMenuView {
 
     public void getPlayerSelection() {
         String selection;
-
+        Scanner input = SnakeWithPartner.getInFile();
         do {
             this.displayMenu();
-            Scanner input = new Scanner(System.in);
             selection = input.nextLine();
             switch (selection) {
                 case "1":

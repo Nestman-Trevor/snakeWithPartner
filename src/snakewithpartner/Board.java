@@ -45,7 +45,7 @@ public class Board{
         }
     }
     //Fills the board with the border and the blank spaces
-    public void fillBoard(){
+    private void fillBoard(){
         for(int i = 0;i < board.length;i++){
             for(int j = 0;j < board.length;j++){
                 if(i == 0 || j == 0 || i == 49 || j == 49){

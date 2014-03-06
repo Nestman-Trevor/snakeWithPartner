@@ -38,7 +38,7 @@ public class HelpMenuView {
 
         do {
             this.displayMenu();
-            Scanner input = new Scanner(System.in);
+            Scanner input = SnakeWithPartner.getInFile();
             selection = input.nextLine();
             switch (selection) {
                 case "1":

@@ -13,13 +13,20 @@ import java.util.Scanner;
  */
 public class SnakeWithPartner {
 
-    double finalScore;
-    
-    public static String name;
-
     String instructions = "Welcome to Snake!\nVersion: 1.0\n"
             + "The goal is to eat the food and not yourself.\n"
             + "Also, avoid trying to leave the area.";
+    
+    private static Scanner inFile = new Scanner(System.in);
+
+    public SnakeWithPartner() {
+    }
+
+    public static Scanner getInFile() {
+        return SnakeWithPartner.inFile;
+    }
+    
+    
 
     /**
      * @param args the command line arguments
@@ -30,9 +37,8 @@ public class SnakeWithPartner {
 //        snakeControlView snakeControl = new snakeControlView();
 //        snakeControl.displayInput();
           
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("What's your name: ");
-//        name = input.next();
+//        Player player = new Player();
+//        player.askName();
 //        System.out.println("Enter your score: ");
 //        int score = input.nextInt();
 //        System.out.println("Enter the difficulty (1, 2, or 3): ");
