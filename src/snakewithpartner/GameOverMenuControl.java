@@ -14,7 +14,7 @@ public class GameOverMenuControl {
     public void goToMain() {
         this.displayGameOverMenuBorder();
         System.out.println(
-                "\tTakse the user to the main menu"
+                "\tTakes the user to the main menu"
         );
         this.displayGameOverMenuBorder();
     }

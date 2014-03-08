@@ -5,6 +5,7 @@
  */
 package snakewithpartner;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,9 @@ public class SnakeWithPartner {
             + "Also, avoid trying to leave the area.";
     
     private static Scanner inFile = new Scanner(System.in);
+    private static Random generator = new Random();
+
+    
 
     public SnakeWithPartner() {
     }
@@ -26,7 +30,9 @@ public class SnakeWithPartner {
         return SnakeWithPartner.inFile;
     }
     
-    
+    public static Random getGenerator() {
+        return generator;
+    }
 
     /**
      * @param args the command line arguments
