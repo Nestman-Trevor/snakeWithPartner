@@ -20,6 +20,9 @@ public class SnakeWithPartner {
     
     private static Scanner inFile = new Scanner(System.in);
     private static Random generator = new Random();
+    private static MainMenuView mainMenu = new MainMenuView();
+    private static PlayMenuView playMenu = new PlayMenuView();
+    private static HelpMenuView helpMenu = new HelpMenuView();
 
     
 
@@ -32,6 +35,18 @@ public class SnakeWithPartner {
     
     public static Random getGenerator() {
         return generator;
+    }
+
+    public static MainMenuView getMainMenu() {
+        return SnakeWithPartner.mainMenu;
+    }
+
+    public static PlayMenuView getPlayMenu() {
+        return SnakeWithPartner.playMenu;
+    }
+
+    public static HelpMenuView getHelpMenu() {
+        return helpMenu;
     }
 
     /**

@@ -12,16 +12,15 @@ import java.util.Scanner;
  *
  * @author trevornestman
  */
-public class Player implements Serializable{
+public class Player implements Serializable {
 
     //Sets the player string
-    String name;
-    private int score;
+    private String name;
     private int difficulty;
+    private int score;
 
-    public Player(String name, int score, int difficulty) {
+    public Player(String name, int difficulty) {
         this.name = name;
-        this.score = score;
         this.difficulty = difficulty;
     }
 
@@ -33,20 +32,20 @@ public class Player implements Serializable{
         this.name = name;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public int getDifficulty() {
         return difficulty;
     }
 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
     
     
@@ -63,48 +62,36 @@ public class Player implements Serializable{
         name = input.next();
     }
 
-    /**
-     *
-     * @author jmarchello
-     */
-    public class Score {
+    //diplay players score
+    public void displayScore() {
+        System.out.println("Score: " + score);
+    }
 
-        //Player's current score
-        int score = 0;
-        //This variable will be stored elsewhere, but will be used to measure the difficulty
-        int difficulty;
+    //Add to score
+    public void scoreAdd() {
         //Player's inputed score
-        String userScore;
+        String userScore = null;
         //user input is "done"
         boolean done = false;
-
-        //diplay players score
-        public void displayScore() {
-            System.out.println("Score: " + score);
-        }
-
-        //Add to score
-        public void scoreAdd() {
-            Scanner input = SnakeWithPartner.getInFile();
-            System.out.println("Enter your score (or \"done\" to stop): ");
-            do {
-                this.userScore = input.next();
-                switch (userScore) {
-                    case "100":
-                        score += 100;
-                        System.out.println("Enter your score again (\"done\" to stop) : ");
-                        break;
-                    case "done":
-                        done = true;
-                        break;
-                    default:
-                        score -= 100;
-                        System.out.println("Enter \"100\" or \"done\"\nEnter your score:");
-                        break;
-                }
-            } while (done != true);
-            System.out.println("Total score = " + score);
-        }
+        Scanner input = SnakeWithPartner.getInFile();
+        System.out.println("Enter your score (or \"done\" to stop): ");
+        do {
+            userScore = input.next();
+            switch (userScore) {
+                case "100":
+                    score += 100;
+                    System.out.println("Enter your score again (\"done\" to stop) : ");
+                    break;
+                case "done":
+                    done = true;
+                    break;
+                default:
+                    score -= 100;
+                    System.out.println("Enter \"100\" or \"done\"\nEnter your score:");
+                    break;
+            }
+        } while (done != true);
+        System.out.println("Total score = " + score);
     }
 
 }

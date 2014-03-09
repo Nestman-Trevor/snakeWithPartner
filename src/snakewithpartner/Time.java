@@ -6,13 +6,26 @@
 
 package snakewithpartner;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jmarchello
  */
-public class Time {
+public class Time implements Serializable{
     //Current timestamp in seconds
-    long timeStampSecs = System.currentTimeMillis() / 1000;
+    private long timeStampSecs = System.currentTimeMillis() / 1000;
+
+    public Time() {
+    }
+
+    public long getTimeStampSecs() {
+        return timeStampSecs;
+    }
+
+    public void setTimeStampSecs(long timeStampSecs) {
+        this.timeStampSecs = timeStampSecs;
+    }
     
     //display timestamp in seconds
     public void showTimeInSeconds(){

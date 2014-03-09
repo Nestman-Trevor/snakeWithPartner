@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package snakewithpartner;
 
 import java.util.Scanner;
@@ -13,12 +12,13 @@ import java.util.Scanner;
  * @author trevornestman
  */
 public class MainMenuView {
+
     //List of options the player can select from
     private final static String[][] menuItems = {
-        {"1", "Launch Play Menu"},
-        {"2", "High Score Menu"},
-        {"3", "Settings Menu"},
-        {"4", "Display Help Menu"},
+        {"1", "Play"},
+        {"2", "High Scores"},
+        {"3", "Settings"},
+        {"4", "Help"},
         {"0", "exit"}
     };
 
@@ -62,5 +62,36 @@ public class MainMenuView {
                     continue;
             }
         } while (!selection.equals("0"));
+    }
+
+    private class MainMenuControl {
+
+        public void launchPlayMenu() {
+            PlayMenuView playMenu = new PlayMenuView();
+            playMenu.getPlayerSelection();
+        }
+
+        public void displayHighScores() {
+            this.displayBorder();
+            System.out.println("\t\tThis will eventually show all high score lists, \n"
+                    + "or a menu to choose which list to show");
+            this.displayBorder();
+        }
+
+        public void launchSettingsMenu() {
+            this.displayBorder();
+            System.out.println("\t\tThis will launch settings menu after the game is more developed");
+            this.displayBorder();
+        }
+
+        public void launchHelpMenu() {
+            HelpMenuView helpMenu = new HelpMenuView();
+            helpMenu.getPlayerSelection();
+        }
+
+        private void displayBorder() {
+            System.out.println(
+                    "\t-----------------------------------------------------------------------------");
+        }
     }
 }

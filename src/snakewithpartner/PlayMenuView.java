@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package snakewithpartner;
 
 import java.util.Scanner;
@@ -13,12 +12,13 @@ import java.util.Scanner;
  * @author Josh
  */
 public class PlayMenuView {
+
     //List of options the player can select from
     private final static String[][] menuItems = {
         {"1", "Easy"},
         {"2", "Medium"},
         {"3", "Hard"},
-        {"0", "Hard"}
+        {"0", "Back"}
     };
 
     // Create instance of the HelpMenuControl (action) class
@@ -57,5 +57,31 @@ public class PlayMenuView {
                     continue;
             }
         } while (!selection.equals("0"));
-    }    
+    }
+
+    private class PlayMenuControl {
+
+        public void playEasy() {
+            this.displayBorder();
+            System.out.println("\t\t1This will launch the Easy game board and begin gameplay");
+            this.displayBorder();
+        }
+
+        public void playMedium() {
+            this.displayBorder();
+            System.out.println("\t\tThis will launch the Medium game board and begin gameplay");
+            this.displayBorder();
+        }
+
+        public void playHard() {
+            this.displayBorder();
+            System.out.println("\t\tThis will launch the Hard game board and begin gameplay");
+            this.displayBorder();
+        }
+
+        private void displayBorder() {
+            System.out.println(
+                    "\t-----------------------------------------------------------------------------");
+        }
+    }
 }

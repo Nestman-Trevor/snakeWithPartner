@@ -7,22 +7,44 @@
 package snakewithpartner;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  *
  * @author trevornestman
  */
-public class Settings {
+public class Settings implements Serializable{
     //
-    String settingsTitle = "Settings";
+    private final String settingsTitle = "Settings";
     //Initiates the sound boolean
-    String settingsIntro = "\nWelcome to the settings menu! \nHere the sound can be"
+    private final String settingsIntro = "\nWelcome to the settings menu! \nHere the sound can be"
             + "turned on and off and the color of the game can be changed."
             + "\n\nTurn the sound off and on here: ";
-    boolean soundOn = true;
+    private boolean soundOn = true;
     //Initiates the color for the game and is set to green 
-    String gameColorsIntro = "\nClick here to change the color of the game";
-    Color gameColors = Color.green;
+    private final String gameColorsIntro = "\nClick here to change the color of the game";
+    private Color gameColors = Color.green;
+
+    public Settings() {
+    }
+
+    public boolean isSoundOn() {
+        return soundOn;
+    }
+
+    public void setSoundOn(boolean soundOn) {
+        this.soundOn = soundOn;
+    }
+
+    public Color getGameColors() {
+        return gameColors;
+    }
+
+    public void setGameColors(Color gameColors) {
+        this.gameColors = gameColors;
+    }
+    
+    
     
     //Toggle the sound
     public void displaySettings(){

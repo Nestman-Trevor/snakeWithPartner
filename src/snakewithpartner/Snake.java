@@ -6,6 +6,8 @@
 
 package snakewithpartner;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jmarchello
@@ -13,11 +15,40 @@ package snakewithpartner;
 
 
 
-public class Snake {
+public class Snake implements Serializable{
     //current length of snake
-    int length = 3; //snake is 3 sections long at start of game
-    int xPosition = 0;
-    int yPosition = 0;
+    private int length = 3; //snake is 3 sections long at start of game
+    private int xPosition = 0;
+    private int yPosition = 0;
+
+    public Snake() {
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getxPosition() {
+        return xPosition;
+    }
+
+    public void setxPosition(int xPosition) {
+        this.xPosition = xPosition;
+    }
+
+    public int getyPosition() {
+        return yPosition;
+    }
+
+    public void setyPosition(int yPosition) {
+        this.yPosition = yPosition;
+    }
+    
+    
     
     public void moveSnake(int xInput, int yInput){
        boolean xIsValid = false;

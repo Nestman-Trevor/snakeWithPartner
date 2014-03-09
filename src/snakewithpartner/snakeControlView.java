@@ -16,7 +16,7 @@ public class snakeControlView {
     char input;
     String message;
 
-    String getPlayerInput() {
+    private String getPlayerInput() {
         Scanner scan = SnakeWithPartner.getInFile();
         while (input != 'q') {
             try {
