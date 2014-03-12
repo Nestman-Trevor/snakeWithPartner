@@ -53,21 +53,9 @@ public class SnakeWithPartner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        MainMenuView mainMenu = new MainMenuView();
-//        mainMenu.getPlayerSelection();
-//        snakeControlView snakeControl = new snakeControlView();
-//        snakeControl.displayInput();
-          
-//        Player player = new Player();
-//        player.askName();
-//        System.out.println("Enter your score: ");
-//        int score = input.nextInt();
-//        System.out.println("Enter the difficulty (1, 2, or 3): ");
-//        int difficulty = input.nextInt();
-//        HighScore highScore = new HighScore();
-//        highScore.addToHighScores(name, score, difficulty);
-          Board board = new Board();
-          board.displayBoard();
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.getPlayerSelection();
+
 
     }
 }

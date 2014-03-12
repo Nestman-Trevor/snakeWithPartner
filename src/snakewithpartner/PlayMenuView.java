@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Josh
  */
-public class PlayMenuView {
+public class PlayMenuView extends Menu{
 
     //List of options the player can select from
     private final static String[][] menuItems = {
@@ -24,16 +24,12 @@ public class PlayMenuView {
     // Create instance of the HelpMenuControl (action) class
     private PlayMenuControl playMenuControl = new PlayMenuControl();
 
-    public void displayMenu() {
-        System.out.println("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("\tEnter the number that coorisponds with your desired menu item:");
-
-        for (int i = 0; i < menuItems.length; i++) {
-            System.out.println("\t\t" + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    public PlayMenuView(){
+        super(PlayMenuView.menuItems);
     }
+    
 
+    @Override
     public void getPlayerSelection() {
         String selection;
         Scanner input = SnakeWithPartner.getInFile();
@@ -63,7 +59,7 @@ public class PlayMenuView {
 
         public void playEasy() {
             this.displayBorder();
-            System.out.println("\t\t1This will launch the Easy game board and begin gameplay");
+            System.out.println("\t\tThis will launch the Easy game board and begin gameplay");
             this.displayBorder();
         }
 

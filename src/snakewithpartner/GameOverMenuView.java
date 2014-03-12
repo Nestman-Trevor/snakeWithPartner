@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package snakewithpartner;
 
 import java.util.Scanner;
@@ -12,7 +11,8 @@ import java.util.Scanner;
  *
  * @author jmarchello
  */
-public class GameOverMenuView {
+public class GameOverMenuView extends Menu{
+
     //List of options the player can select from
     private final static String[][] menuItems = {
         {"1", "Play Again"},
@@ -24,16 +24,12 @@ public class GameOverMenuView {
     // Create instance of the GameOverMenuControl (action) class
     private GameOverMenuControl gameOverMenuControl = new GameOverMenuControl();
 
-    public void displayMenu() {
-        System.out.println("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("\tEnter the number that coorisponds with your desired menu item:");
-
-        for (int i = 0; i < menuItems.length; i++) {
-            System.out.println("\t\t" + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    public GameOverMenuView(){
+        super(GameOverMenuView.menuItems);
     }
-
+    
+    
+    @Override
     public void getPlayerSelection() {
         String selection;
         Scanner input = SnakeWithPartner.getInFile();
@@ -57,5 +53,37 @@ public class GameOverMenuView {
                     continue;
             }
         } while (!selection.equals("0"));
+    }
+
+    private class GameOverMenuControl {
+
+        public void goToMain() {
+            this.displayGameOverMenuBorder();
+            System.out.println(
+                    "\tTakes the user to the main menu"
+            );
+            this.displayGameOverMenuBorder();
+        }
+
+        public void goToHighScores() {
+            this.displayGameOverMenuBorder();
+            System.out.println(
+                    "\tTakes player to the High Score Menu"
+            );
+            this.displayGameOverMenuBorder();
+        }
+
+        public void repeatGame() {
+            this.displayGameOverMenuBorder();
+            System.out.println(
+                    "\tStarts the game again with the same settings"
+            );
+            this.displayGameOverMenuBorder();
+        }
+
+        public void displayGameOverMenuBorder() {
+            System.out.println(
+                    "\t-----------------------------------------------------------------------------");
+        }
     }
 }

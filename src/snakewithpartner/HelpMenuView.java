@@ -11,9 +11,10 @@ import java.util.Scanner;
  *
  * @author trevornestman
  */
-public class HelpMenuView {
+public class HelpMenuView extends Menu{
 
     //List of options the player can select from
+    
     private final static String[][] menuItems = {
         {"1", "Rules"},
         {"2", "Controls"},
@@ -22,17 +23,12 @@ public class HelpMenuView {
 
     // Create instance of the HelpMenuControl (action) class
     private HelpMenuControl helpMenuControl = new HelpMenuControl();
-
-    public void displayMenu() {
-        System.out.println("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("\tEnter the number that coorisponds with your desired menu item:");
-
-        for (int i = 0; i < menuItems.length; i++) {
-            System.out.println("\t\t" + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    
+    public HelpMenuView(){
+        super(HelpMenuView.menuItems);
     }
 
+    @Override
     public void getPlayerSelection() {
         String selection;
 
@@ -54,5 +50,35 @@ public class HelpMenuView {
                     continue;
             }
         } while (!selection.equals("0"));
+    }
+
+    private class HelpMenuControl {
+
+        public void displayRules() {
+            this.displayHelpBorder();
+            System.out.println(
+                    "\tRULES"
+                    + "\n\tThe goal of snake is to eat as much food as possible! To get the"
+                    + "\n\thighest score without hitting the wall or eating yourelf. And"
+                    + "\n\tthat's it, that's the whole thing."
+            );
+            this.displayHelpBorder();
+        }
+
+        public void displayControls() {
+            this.displayHelpBorder();
+            System.out.println(
+                    "\tCONTROLS"
+                    + "\n\tUse arrow keys to change direction"
+                    + "\n\tPress \"P\" to pause"
+                    + "\n\tPress \"Q\" to quit"
+            );
+            this.displayHelpBorder();
+        }
+
+        public void displayHelpBorder() {
+            System.out.println(
+                    "\t-----------------------------------------------------------------------------");
+        }
     }
 }

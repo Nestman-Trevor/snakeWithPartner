@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author trevornestman
  */
-public class MainMenuView {
+public class MainMenuView extends Menu{
 
     //List of options the player can select from
     private final static String[][] menuItems = {
@@ -25,16 +25,11 @@ public class MainMenuView {
     // Create instance of the HelpMenuControl (action) class
     private MainMenuControl mainMenuControl = new MainMenuControl();
 
-    public void displayMenu() {
-        System.out.println("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("\tEnter the number that coorisponds with your desired menu item:");
-
-        for (int i = 0; i < menuItems.length; i++) {
-            System.out.println("\t\t" + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    public MainMenuView(){
+        super(MainMenuView.menuItems);
     }
-
+    
+    @Override
     public void getPlayerSelection() {
         String selection;
 
