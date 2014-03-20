@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 
-package snakewithpartner;
+package snakewithpartner.menus;
+
+import snakewithpartner.interfaces.*;
 
 /**
  *
  * @author trevornestman
  */
-public abstract class Menu {
+public class Menu implements DisplayInfo, EnterInfo {
     
     private String[][] menuItems = null;
     
@@ -27,6 +29,14 @@ public abstract class Menu {
         }
         System.out.println("\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
-    
-    public abstract void getPlayerSelection();
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void getInput() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

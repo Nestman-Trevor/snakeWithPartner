@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakewithpartner;
+package snakewithpartner.menus;
 
 import java.util.Scanner;
+import snakewithpartner.SnakeWithPartner;
 
 /**
  *
@@ -30,7 +31,7 @@ public class GameOverMenuView extends Menu{
     
     
     @Override
-    public void getPlayerSelection() {
+    public void getInput() {
         String selection;
         Scanner input = SnakeWithPartner.getInFile();
 
@@ -53,6 +54,11 @@ public class GameOverMenuView extends Menu{
                     continue;
             }
         } while (!selection.equals("0"));
+    }
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private class GameOverMenuControl {

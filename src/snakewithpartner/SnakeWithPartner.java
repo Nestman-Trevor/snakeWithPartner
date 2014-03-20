@@ -5,6 +5,9 @@
  */
 package snakewithpartner;
 
+import snakewithpartner.menus.HelpMenuView;
+import snakewithpartner.menus.MainMenuView;
+import snakewithpartner.menus.PlayMenuView;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -54,7 +57,7 @@ public class SnakeWithPartner {
      */
     public static void main(String[] args) {
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.getPlayerSelection();
+        mainMenu.getInput();
 
 
     }

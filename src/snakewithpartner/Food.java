@@ -60,13 +60,13 @@ public class Food implements Serializable{
     //Display score value per item collected
     public void setCurrentValWithDifficulty(Player player) {
         switch (player.getDifficulty()){
-            case 1:
+            case EASY:
                 currentFoodValue = easyValue;
                 break;
-            case 2:
+            case MEDIUM:
                 currentFoodValue = mediumValue;
                 break;
-            case 3:
+            case HARD:
                 currentFoodValue = hardValue;
                 break;
             default:

@@ -5,6 +5,7 @@
  */
 package snakewithpartner;
 
+import snakewithpartner.enums.Difficulty;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -16,10 +17,10 @@ public class Player implements Serializable {
 
     //Sets the player string
     private String name;
-    private int difficulty;
+    private Difficulty difficulty;
     private int score;
 
-    public Player(String name, int difficulty) {
+    public Player(String name, Difficulty difficulty) {
         this.name = name;
         this.difficulty = difficulty;
     }
@@ -32,11 +33,11 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-    public int getDifficulty() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(int difficulty) {
+    public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 

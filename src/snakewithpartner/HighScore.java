@@ -5,16 +5,18 @@
  */
 package snakewithpartner;
 
+import snakewithpartner.enums.Difficulty;
 import java.io.Serializable;
 import static java.lang.Integer.parseInt;
 import java.util.Scanner;
+import static snakewithpartner.enums.Difficulty.*;
 
 /**
  *
  * @author trevornestman
  */
 public class HighScore implements Serializable{
-
+    
     //High score title
     private String highScoreTitle = "High Scores";
 
@@ -133,21 +135,21 @@ public class HighScore implements Serializable{
         if (isValidScore(player.getScore())) {
             switch (player.getDifficulty()) {
                 //Easy difficulty sort
-                case 1:
+                case EASY:
                     for (int k = 0; k < easyHighScores.length; k++) {
                         highScores[k][0] = easyHighScores[k][0];
                         highScores[k][1] = easyHighScores[k][1];
                     }
                     break;
                 //Medium difficulty sort
-                case 2:
+                case MEDIUM:
                     for (int k = 0; k < mediumHighScores.length; k++) {
                         highScores[k][0] = mediumHighScores[k][0];
                         highScores[k][1] = mediumHighScores[k][1];
                     }
                     break;
                 //Hard difficulty sort
-                case 3:
+                case HARD:
                     for (int k = 0; k < hardHighScores.length; k++) {
                         highScores[k][0] = hardHighScores[k][0];
                         highScores[k][1] = hardHighScores[k][1];
@@ -182,21 +184,21 @@ public class HighScore implements Serializable{
             }
 
             switch (player.getDifficulty()) {
-                case 1:
+                case EASY:
                     for (int k = 0; k < (newHighScores.length - 1); k++) {
                         easyHighScores[k][0] = newHighScores[k][0];
                         easyHighScores[k][1] = newHighScores[k][1];
                     }
                     this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
                     break;
-                case 2:
+                case MEDIUM:
                     for (int k = 0; k < (newHighScores.length - 1); k++) {
                         mediumHighScores[k][0] = newHighScores[k][0];
                         mediumHighScores[k][1] = newHighScores[k][1];
                     }
                     this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
                     break;
-                case 3:
+                case HARD:
                     for (int k = 0; k < (newHighScores.length - 1); k++) {
                         hardHighScores[k][0] = newHighScores[k][0];
                         hardHighScores[k][1] = newHighScores[k][1];
@@ -249,16 +251,16 @@ public class HighScore implements Serializable{
         this.displayHighScoreInfo(highScores, this.difficultyLevelString(player.getDifficulty()));
     }
 
-    private String[][] returnTempList(int difficulty) {
+    private String[][] returnTempList(Difficulty difficulty) {
         String[][] tempList;
         switch (difficulty) {
-            case 1:
+            case EASY:
                 tempList = easyHighScores;
                 break;
-            case 2:
+            case MEDIUM:
                 tempList = mediumHighScores;
                 break;
-            case 3:
+            case HARD:
                 tempList = hardHighScores;
                 break;
             default:
@@ -269,16 +271,16 @@ public class HighScore implements Serializable{
         return tempList;
     }
     
-    private String difficultyLevelString(int difficulty){
+    private String difficultyLevelString(Difficulty difficulty){
         String levelDifficulty;
         switch (difficulty) {
-            case 1:
+            case EASY:
                 levelDifficulty = "Easy";
                 break;
-            case 2:
+            case MEDIUM:
                 levelDifficulty = "Medium";
                 break;
-            case 3:
+            case HARD:
                 levelDifficulty = "Hard";
                 break;
             default:
