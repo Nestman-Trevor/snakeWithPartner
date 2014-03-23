@@ -7,6 +7,7 @@ package snakewithpartner.menus;
 
 import java.util.Scanner;
 import snakewithpartner.SnakeWithPartner;
+import snakewithpartner.interfaces.DisplayInfo;
 
 /**
  *
@@ -53,36 +54,32 @@ public class HelpMenuView extends Menu{
         } while (!selection.equals("0"));
     }
 
-    @Override
-    public void display() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private class HelpMenuControl {
+    private class HelpMenuControl implements DisplayInfo{
 
         public void displayRules() {
-            this.displayHelpBorder();
+            this.displayBorder();
             System.out.println(
                     "\tRULES"
                     + "\n\tThe goal of snake is to eat as much food as possible! To get the"
                     + "\n\thighest score without hitting the wall or eating yourelf. And"
                     + "\n\tthat's it, that's the whole thing."
             );
-            this.displayHelpBorder();
+            this.displayBorder();
         }
 
         public void displayControls() {
-            this.displayHelpBorder();
+            this.displayBorder();
             System.out.println(
                     "\tCONTROLS"
                     + "\n\tUse arrow keys to change direction"
                     + "\n\tPress \"P\" to pause"
                     + "\n\tPress \"Q\" to quit"
             );
-            this.displayHelpBorder();
+            this.displayBorder();
         }
 
-        public void displayHelpBorder() {
+        @Override
+        public void displayBorder() {
             System.out.println(
                     "\t-----------------------------------------------------------------------------");
         }

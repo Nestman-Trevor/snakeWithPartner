@@ -7,6 +7,7 @@ package snakewithpartner.menus;
 
 import java.util.Scanner;
 import snakewithpartner.SnakeWithPartner;
+import snakewithpartner.interfaces.DisplayInfo;
 
 /**
  *
@@ -56,38 +57,34 @@ public class GameOverMenuView extends Menu{
         } while (!selection.equals("0"));
     }
 
-    @Override
-    public void display() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private class GameOverMenuControl {
+    private class GameOverMenuControl implements DisplayInfo{
 
         public void goToMain() {
-            this.displayGameOverMenuBorder();
+            this.displayBorder();
             System.out.println(
                     "\tTakes the user to the main menu"
             );
-            this.displayGameOverMenuBorder();
+            this.displayBorder();
         }
 
         public void goToHighScores() {
-            this.displayGameOverMenuBorder();
+            this.displayBorder();
             System.out.println(
                     "\tTakes player to the High Score Menu"
             );
-            this.displayGameOverMenuBorder();
+            this.displayBorder();
         }
 
         public void repeatGame() {
-            this.displayGameOverMenuBorder();
+            this.displayBorder();
             System.out.println(
                     "\tStarts the game again with the same settings"
             );
-            this.displayGameOverMenuBorder();
+            this.displayBorder();
         }
 
-        public void displayGameOverMenuBorder() {
+        @Override
+        public void displayBorder() {
             System.out.println(
                     "\t-----------------------------------------------------------------------------");
         }

@@ -7,6 +7,7 @@ package snakewithpartner.menus;
 
 import java.util.Scanner;
 import snakewithpartner.SnakeWithPartner;
+import snakewithpartner.interfaces.DisplayInfo;
 
 /**
  *
@@ -56,12 +57,7 @@ public class PlayMenuView extends Menu{
         } while (!selection.equals("0"));
     }
 
-    @Override
-    public void display() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private class PlayMenuControl {
+    private class PlayMenuControl implements DisplayInfo{
 
         public void playEasy() {
             this.displayBorder();
@@ -81,7 +77,8 @@ public class PlayMenuView extends Menu{
             this.displayBorder();
         }
 
-        private void displayBorder() {
+        @Override
+        public void displayBorder() {
             System.out.println(
                     "\t-----------------------------------------------------------------------------");
         }

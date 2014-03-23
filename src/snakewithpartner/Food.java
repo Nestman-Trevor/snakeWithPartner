@@ -5,6 +5,7 @@
  */
 package snakewithpartner;
 
+import snakewithpartner.players.Player;
 import java.io.Serializable;
 import java.util.Random;
 

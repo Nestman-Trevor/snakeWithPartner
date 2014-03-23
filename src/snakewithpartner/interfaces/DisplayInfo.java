@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package snakewithpartner.interfaces;
 
 /**
@@ -11,5 +10,6 @@ package snakewithpartner.interfaces;
  * @author josh
  */
 public interface DisplayInfo {
-    void display();
+
+    void displayBorder();
 }

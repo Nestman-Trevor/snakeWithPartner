@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakewithpartner;
+package snakewithpartner.players;
 
 import snakewithpartner.enums.Difficulty;
 import java.io.Serializable;
 import java.util.Scanner;
+import snakewithpartner.SnakeWithPartner;
 
 /**
  *
