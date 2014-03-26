@@ -7,13 +7,14 @@ package snakewithpartner.menus;
 
 import snakewithpartner.SnakeWithPartner;
 import java.util.Scanner;
+import snakewithpartner.custumexceptions.MenuException;
 import snakewithpartner.interfaces.DisplayInfo;
 
 /**
  *
  * @author trevornestman
  */
-public class MainMenuView extends Menu{
+public class MainMenuView extends Menu {
 
     //List of options the player can select from
     private final static String[][] menuItems = {
@@ -27,41 +28,51 @@ public class MainMenuView extends Menu{
     // Create instance of the HelpMenuControl (action) class
     private MainMenuControl mainMenuControl = new MainMenuControl();
 
-    public MainMenuView(){
+    public MainMenuView() {
         super(MainMenuView.menuItems);
     }
-    
+
     @Override
     public void getInput() {
-        String selection;
+        int selection = -1;
+        boolean isValid = false;
 
         do {
             this.displayMenu();
             Scanner input = SnakeWithPartner.getInFile();
-            selection = input.nextLine();
+            do {
+                try {
+                    selection = input.nextInt();
+                    isValid = true;
+                } catch (NumberFormatException numx) {
+                    System.out.println("Invalid Input. Please input a valid number.");
+                    isValid = false;
+                }
+            } while (!isValid);
+
             switch (selection) {
-                case "1":
+                case 1:
                     this.mainMenuControl.launchPlayMenu();
                     break;
-                case "2":
+                case 2:
                     this.mainMenuControl.displayHighScores();
                     break;
-                case "3":
+                case 3:
                     this.mainMenuControl.launchSettingsMenu();
                     break;
-                case "4":
+                case 4:
                     this.mainMenuControl.launchHelpMenu();
                     break;
-                case "0":
+                case 0:
                     break;
                 default:
                     System.out.println("Please enter a valid menu item:");
                     continue;
             }
-        } while (!selection.equals("0"));
+        } while (selection != 0);
     }
 
-    private class MainMenuControl implements DisplayInfo{
+    private class MainMenuControl implements DisplayInfo {
 
         public void launchPlayMenu() {
             PlayMenuView playMenu = new PlayMenuView();

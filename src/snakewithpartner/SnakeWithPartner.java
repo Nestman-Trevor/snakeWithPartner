@@ -16,7 +16,7 @@ import java.util.Scanner;
  * @author trevornestman
  */
 public class SnakeWithPartner {
-
+    
     String instructions = "Welcome to Snake!\nVersion: 1.0\n"
             + "The goal is to eat the food and not yourself.\n"
             + "Also, avoid trying to leave the area.";
@@ -56,9 +56,13 @@ public class SnakeWithPartner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        try{
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.getInput();
-
+        }
+        catch(Throwable ex){
+        System.out.println("ERROR: Unexpected error" + ex.getMessage());
+        }
 
     }
 }

@@ -33,28 +33,37 @@ public class GameOverMenuView extends Menu{
     
     @Override
     public void getInput() {
-        String selection;
-        Scanner input = SnakeWithPartner.getInFile();
+        int selection = -1;
+        boolean isValid = false;
 
         do {
             this.displayMenu();
-            selection = input.nextLine();
+            Scanner input = SnakeWithPartner.getInFile();
+            do {
+                try {
+                    selection = input.nextInt();
+                    isValid = true;
+                } catch (NumberFormatException numx) {
+                    System.out.println("Invalid Input. Please input a valid number.");
+                    isValid = false;
+                }
+            } while (!isValid);
             switch (selection) {
-                case "1":
+                case 1:
                     this.gameOverMenuControl.repeatGame();
                     break;
-                case "2":
+                case 2:
                     this.gameOverMenuControl.goToMain();
                     break;
-                case "3":
+                case 3:
                     this.gameOverMenuControl.goToHighScores();
-                case "0":
+                case 0:
                     break;
                 default:
                     System.out.println("Please enter a valid menu item:");
                     continue;
             }
-        } while (!selection.equals("0"));
+        } while (selection != 0);
     }
 
     private class GameOverMenuControl implements DisplayInfo{

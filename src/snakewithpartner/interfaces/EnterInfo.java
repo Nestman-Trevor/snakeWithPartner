@@ -6,10 +6,12 @@
 
 package snakewithpartner.interfaces;
 
+import snakewithpartner.custumexceptions.MenuException;
+
 /**
  *
  * @author josh
  */
 public interface EnterInfo {
-    void getInput();
+    void getInput() throws MenuException ;
 }
