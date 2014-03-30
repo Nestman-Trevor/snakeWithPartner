@@ -16,8 +16,8 @@ import static snakewithpartner.enums.Difficulty.*;
  *
  * @author trevornestman
  */
-public class HighScore implements Serializable{
-    
+public class HighScore implements Serializable {
+
     //High score title
     private String highScoreTitle = "High Scores";
 
@@ -114,8 +114,6 @@ public class HighScore implements Serializable{
     public void setUserInput(String userInput) {
         this.userInput = userInput;
     }
-    
-    
 
     //Display everything in High Score
     public void displayHighScoreInfo(String[][] highScoreList, String highScoreTitle) {
@@ -127,100 +125,107 @@ public class HighScore implements Serializable{
 
     //Sorts high score list
     public void addToHighScores(Player player) {
-        int i, j, temp;
-        String tempName;
-        String[][] newHighScores = new String[11][2];
-        boolean isHighScore = false;
-        String[][] highScores;
-        highScores = new String[10][2];
-        if (isValidScore(player.getScore())) {
-            switch (player.getDifficulty()) {
-                //Easy difficulty sort
-                case EASY:
-                    for (int k = 0; k < easyHighScores.length; k++) {
-                        highScores[k][0] = easyHighScores[k][0];
-                        highScores[k][1] = easyHighScores[k][1];
-                    }
-                    break;
-                //Medium difficulty sort
-                case MEDIUM:
-                    for (int k = 0; k < mediumHighScores.length; k++) {
-                        highScores[k][0] = mediumHighScores[k][0];
-                        highScores[k][1] = mediumHighScores[k][1];
-                    }
-                    break;
-                //Hard difficulty sort
-                case HARD:
-                    for (int k = 0; k < hardHighScores.length; k++) {
-                        highScores[k][0] = hardHighScores[k][0];
-                        highScores[k][1] = hardHighScores[k][1];
-                    }
-                    break;
-                default:
-                    System.out.println("No difficulty");
-                    return;
-            }
 
-            isHighScore = isHighScore(highScores, player.getScore());
-
-            if (!isHighScore) {
-                System.out.println("Not a high score.");
-                return;
-            }
-            for (int k = 0; k < highScores.length; k++) {
-                newHighScores[k][0] = highScores[k][0];
-                newHighScores[k][1] = highScores[k][1];
-            }
-            newHighScores[10][0] = player.getName();
-            newHighScores[10][1] = Integer.toString(player.getScore());
-            for (j = 1; j < newHighScores.length; j++) {
-                temp = parseInt(newHighScores[j][1]);
-                tempName = newHighScores[j][0];
-                for (i = j - 1; (i >= 0) && (parseInt(newHighScores[i][1]) < temp); i--) {
-                    newHighScores[i + 1][1] = newHighScores[i][1];
-                    newHighScores[i + 1][0] = newHighScores[i][0];
+        try {
+            int i, j, temp = 0;
+            String tempName;
+            String[][] newHighScores = new String[11][2];
+            boolean isHighScore = false;
+            String[][] highScores;
+            highScores = new String[10][2];
+            if (isValidScore(player.getScore())) {
+                switch (player.getDifficulty()) {
+                    //Easy difficulty sort
+                    case EASY:
+                        for (int k = 0; k < easyHighScores.length; k++) {
+                            highScores[k][0] = easyHighScores[k][0];
+                            highScores[k][1] = easyHighScores[k][1];
+                        }
+                        break;
+                    //Medium difficulty sort
+                    case MEDIUM:
+                        for (int k = 0; k < mediumHighScores.length; k++) {
+                            highScores[k][0] = mediumHighScores[k][0];
+                            highScores[k][1] = mediumHighScores[k][1];
+                        }
+                        break;
+                    //Hard difficulty sort
+                    case HARD:
+                        for (int k = 0; k < hardHighScores.length; k++) {
+                            highScores[k][0] = hardHighScores[k][0];
+                            highScores[k][1] = hardHighScores[k][1];
+                        }
+                        break;
+                    default:
+                        System.out.println("No difficulty");
+                        return;
                 }
-                newHighScores[i + 1][1] = Integer.toString(temp);
-                newHighScores[i + 1][0] = tempName;
-            }
 
-            switch (player.getDifficulty()) {
-                case EASY:
-                    for (int k = 0; k < (newHighScores.length - 1); k++) {
-                        easyHighScores[k][0] = newHighScores[k][0];
-                        easyHighScores[k][1] = newHighScores[k][1];
-                    }
-                    this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
-                    break;
-                case MEDIUM:
-                    for (int k = 0; k < (newHighScores.length - 1); k++) {
-                        mediumHighScores[k][0] = newHighScores[k][0];
-                        mediumHighScores[k][1] = newHighScores[k][1];
-                    }
-                    this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
-                    break;
-                case HARD:
-                    for (int k = 0; k < (newHighScores.length - 1); k++) {
-                        hardHighScores[k][0] = newHighScores[k][0];
-                        hardHighScores[k][1] = newHighScores[k][1];
-                    }
-                    this.displayHighScoreInfo(hardHighScores, "Hard High Scores");
-                    break;
-                default:
-                    System.out.println("Invalid difficulty");
+                isHighScore = isHighScore(highScores, player.getScore());
+
+                if (!isHighScore) {
+                    System.out.println("Not a high score.");
                     return;
-            }
-        } else {
-            System.out.println("Not a valid score.");
-        }
+                }
+                for (int k = 0; k < highScores.length; k++) {
+                    newHighScores[k][0] = highScores[k][0];
+                    newHighScores[k][1] = highScores[k][1];
+                }
+                newHighScores[10][0] = player.getName();
+                newHighScores[10][1] = Integer.toString(player.getScore());
+                for (j = 1; j < newHighScores.length; j++) {
+                    temp = parseInt(newHighScores[j][1]);
 
-        //This next part is to test the displayHighScoreWithName() function
-        Scanner input = SnakeWithPartner.getInFile();
-        System.out.println("Do you want to view the high score's with your name? (\'y\' or \'n\'): ");
-        if (input.hasNext("y")) {
-            displayHighScoreWithName(player);
-        } else {
-            System.out.println("Thanks anyways!");
+                    tempName = newHighScores[j][0];
+                    for (i = j - 1; (i >= 0) && (parseInt(newHighScores[i][1]) < temp); i--) {
+                        newHighScores[i + 1][1] = newHighScores[i][1];
+                        newHighScores[i + 1][0] = newHighScores[i][0];
+                    }
+                    newHighScores[i + 1][1] = Integer.toString(temp);
+                    newHighScores[i + 1][0] = tempName;
+                }
+
+                switch (player.getDifficulty()) {
+                    case EASY:
+                        for (int k = 0; k < (newHighScores.length - 1); k++) {
+                            easyHighScores[k][0] = newHighScores[k][0];
+                            easyHighScores[k][1] = newHighScores[k][1];
+                        }
+                        this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
+                        break;
+                    case MEDIUM:
+                        for (int k = 0; k < (newHighScores.length - 1); k++) {
+                            mediumHighScores[k][0] = newHighScores[k][0];
+                            mediumHighScores[k][1] = newHighScores[k][1];
+                        }
+                        this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
+                        break;
+                    case HARD:
+                        for (int k = 0; k < (newHighScores.length - 1); k++) {
+                            hardHighScores[k][0] = newHighScores[k][0];
+                            hardHighScores[k][1] = newHighScores[k][1];
+                        }
+                        this.displayHighScoreInfo(hardHighScores, "Hard High Scores");
+                        break;
+                    default:
+                        System.out.println("Invalid difficulty");
+                        return;
+                }
+            } else {
+                System.out.println("Not a valid score.");
+            }
+
+            //This next part is to test the displayHighScoreWithName() function
+            Scanner input = SnakeWithPartner.getInFile();
+            System.out.println("Do you want to view the high score's with your name? (\'y\' or \'n\'): ");
+            if (input.hasNext("y")) {
+                displayHighScoreWithName(player);
+            } else {
+                System.out.println("Thanks anyways!");
+            }
+        } catch (NumberFormatException numEx) {
+            System.out.println("Error adding score to High Scores.\n"
+                    + numEx.getMessage());
         }
     }
 
@@ -229,7 +234,7 @@ public class HighScore implements Serializable{
         return isValid;
     }
 
-    private boolean isHighScore(String[][] highScores, int score) {
+    private boolean isHighScore(String[][] highScores, int score) throws NumberFormatException{
         boolean isHighScore = false;
         for (String[] hScore : highScores) {
             int hScoreNumber = parseInt(hScore[1]);
@@ -243,8 +248,8 @@ public class HighScore implements Serializable{
     public void displayHighScoreWithName(Player player) {
         String[][] highScores = returnTempList(player.getDifficulty());
         int level = 0;
-        for(String list[]: highScores){
-            if(player.getName().equals(list[0])){
+        for (String list[] : highScores) {
+            if (player.getName().equals(list[0])) {
                 highScores[level][0] = "*** " + list[0];
             }
             level++;
@@ -271,8 +276,8 @@ public class HighScore implements Serializable{
         }
         return tempList;
     }
-    
-    private String difficultyLevelString(Difficulty difficulty){
+
+    private String difficultyLevelString(Difficulty difficulty) {
         String levelDifficulty;
         switch (difficulty) {
             case EASY:

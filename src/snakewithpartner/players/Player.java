@@ -7,6 +7,7 @@ package snakewithpartner.players;
 
 import snakewithpartner.enums.Difficulty;
 import java.io.Serializable;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import snakewithpartner.SnakeWithPartner;
 
@@ -49,8 +50,6 @@ public class Player implements Serializable {
     public void setScore(int score) {
         this.score = score;
     }
-    
-    
 
     //We already have a score element... so I'm not sure if it's necessary
     //Display the Player's name
@@ -61,7 +60,12 @@ public class Player implements Serializable {
     public void askName() {
         Scanner input = SnakeWithPartner.getInFile();
         System.out.println("What's your name: ");
-        name = input.next();
+        try {
+            name = input.next();
+        }
+        catch(NoSuchElementException | IllegalStateException inEx){
+            System.out.println("System failed to get input due to the following: " + inEx.getMessage());
+        }
     }
 
     //diplay players score
@@ -78,7 +82,7 @@ public class Player implements Serializable {
         Scanner input = SnakeWithPartner.getInFile();
         System.out.println("Enter your score (or \"done\" to stop): ");
         do {
-            userScore = input.next();
+            userScore = input.next(); //no need to exception handling here, this line is for testing only.
             switch (userScore) {
                 case "100":
                     score += 100;
