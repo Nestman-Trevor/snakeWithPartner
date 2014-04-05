@@ -6,6 +6,9 @@
 
 package snakewithpartner.frames;
 
+import snakewithpartner.SnakeWithPartner;
+import snakewithpartner.players.Player;
+
 /**
  *
  * @author trevornestman
@@ -64,6 +67,11 @@ public class EnterPlayerName extends javax.swing.JFrame {
         playerNameField.setText("Playa");
 
         nameButton.setText("Submit");
+        nameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout getNamePanelLayout = new javax.swing.GroupLayout(getNamePanel);
         getNamePanel.setLayout(getNamePanelLayout);
@@ -104,6 +112,18 @@ public class EnterPlayerName extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameButtonActionPerformed
+        String playerName = playerNameField.getText();
+        Player player = new Player();
+        player.setName(playerName);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                SnakeWithPartner.playMenuFrame = new PlayMenuFrame();
+                new PlayMenuFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_nameButtonActionPerformed
 
     /**
      * @param args the command line arguments

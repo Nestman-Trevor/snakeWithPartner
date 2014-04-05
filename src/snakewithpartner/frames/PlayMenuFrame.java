@@ -64,12 +64,27 @@ public class PlayMenuFrame extends javax.swing.JFrame {
 
         playHardButton.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         playHardButton.setText("Hard");
+        playHardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playHardButtonActionPerformed(evt);
+            }
+        });
 
         playEasyButton.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         playEasyButton.setText("Easy");
+        playEasyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playEasyButtonActionPerformed(evt);
+            }
+        });
 
         playMediumButton.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         playMediumButton.setText("Medium");
+        playMediumButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playMediumButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout playMenuPanelLayout = new javax.swing.GroupLayout(playMenuPanel);
         playMenuPanel.setLayout(playMenuPanelLayout);
@@ -113,6 +128,18 @@ public class PlayMenuFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void playEasyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playEasyButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playEasyButtonActionPerformed
+
+    private void playMediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playMediumButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playMediumButtonActionPerformed
+
+    private void playHardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playHardButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playHardButtonActionPerformed
 
     /**
      * @param args the command line arguments

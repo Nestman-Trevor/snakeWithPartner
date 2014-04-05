@@ -127,6 +127,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Hard"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playHardButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="playEasyButton">
           <Properties>
@@ -135,6 +138,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Easy"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playEasyButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="playMediumButton">
           <Properties>
@@ -143,6 +149,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Medium"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playMediumButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

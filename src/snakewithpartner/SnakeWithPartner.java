@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Scanner;
 import snakewithpartner.frames.EnterPlayerName;
 import snakewithpartner.frames.MainFrame;
+import snakewithpartner.frames.PlayMenuFrame;
 
 /**
  *
@@ -21,6 +22,7 @@ public class SnakeWithPartner {
 
     private static MainFrame mainFrame;
     public static EnterPlayerName enterPlayerName;
+    public static PlayMenuFrame playMenuFrame;
 
     String instructions = "Welcome to Snake!\nVersion: 1.0\n"
             + "The goal is to eat the food and not yourself.\n"

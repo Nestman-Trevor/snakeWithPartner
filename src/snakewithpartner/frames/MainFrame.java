@@ -203,7 +203,8 @@ public class MainFrame extends javax.swing.JFrame {
                     SnakeWithPartner.enterPlayerName = new EnterPlayerName();
                     new EnterPlayerName().setVisible(true);
                 }
-            });
+        });
+        this.dispose();
     }//GEN-LAST:event_playButtonActionPerformed
 
     /**

@@ -22,9 +22,7 @@ public class Player implements Serializable {
     private Difficulty difficulty;
     private int score;
 
-    public Player(String name, Difficulty difficulty) {
-        this.name = name;
-        this.difficulty = difficulty;
+    public Player() {
     }
 
     public String getName() {
