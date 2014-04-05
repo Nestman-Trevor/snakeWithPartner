@@ -41,7 +41,7 @@ public class EnterPlayerName extends javax.swing.JFrame {
 
         getNameTitlePanel.setBackground(new java.awt.Color(0, 153, 0));
 
-        getNameTitleLabel.setFont(new java.awt.Font("Marker Felt", 3, 36)); // NOI18N
+        getNameTitleLabel.setFont(new java.awt.Font("Marker Felt", 3, 24)); // NOI18N
         getNameTitleLabel.setText("Please enter your name!");
 
         javax.swing.GroupLayout getNameTitlePanelLayout = new javax.swing.GroupLayout(getNameTitlePanel);
@@ -71,13 +71,14 @@ public class EnterPlayerName extends javax.swing.JFrame {
             getNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(getNameTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(getNamePanelLayout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(playerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(getNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(getNamePanelLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(playerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(getNamePanelLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(nameButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, getNamePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nameButton)
-                .addGap(168, 168, 168))
         );
         getNamePanelLayout.setVerticalGroup(
             getNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +88,7 @@ public class EnterPlayerName extends javax.swing.JFrame {
                 .addComponent(playerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nameButton)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
