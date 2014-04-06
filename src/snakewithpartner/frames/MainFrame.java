@@ -197,9 +197,10 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     SnakeWithPartner.helpMenuFrame = new HelpMenuFrame();
-                    new HelpMenuFrame().setVisible(true);
+                    SnakeWithPartner.helpMenuFrame.setVisible(true);
                 }
             });
+        this.dispose();
     }//GEN-LAST:event_helpButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed

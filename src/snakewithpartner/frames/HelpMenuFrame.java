@@ -146,7 +146,13 @@ public class HelpMenuFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitHelpButtonActionPerformed
-        this.dispose();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    SnakeWithPartner.mainFrame = new MainFrame();
+                    new MainFrame().setVisible(true);
+                }
+            });
+            this.dispose();
     }//GEN-LAST:event_exitHelpButtonActionPerformed
 
     /**
