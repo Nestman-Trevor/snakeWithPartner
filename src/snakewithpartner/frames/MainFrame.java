@@ -111,10 +111,10 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMenuItemsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpMenuItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(playButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(quitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(helpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(highScoreButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(playButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(highScoreButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jpMenuItemsLayout.setVerticalGroup(
@@ -136,7 +136,7 @@ public class MainFrame extends javax.swing.JFrame {
         jtWelcome.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jtWelcome.setLineWrap(true);
         jtWelcome.setRows(5);
-        jtWelcome.setText("Welcome to Snake!\nVersion: 1.0\nThe goal is to eat the food and not yourself.\nAlso, avoid trying to leave the area.");
+        jtWelcome.setText("Welcome to Snake!\nVersion: 1.0\nThe goal is to eat the food and not yourself.\nAlso, avoid the walls.");
         jtWelcome.setWrapStyleWord(true);
         jtWelcome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtWelcome.setMargin(new java.awt.Insets(5, 5, 5, 5));
@@ -194,7 +194,12 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_highScoreButtonActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    SnakeWithPartner.helpMenuFrame = new HelpMenuFrame();
+                    new HelpMenuFrame().setVisible(true);
+                }
+            });
     }//GEN-LAST:event_helpButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
