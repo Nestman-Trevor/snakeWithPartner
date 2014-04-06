@@ -123,6 +123,7 @@ public class EnterPlayerName extends javax.swing.JFrame {
                 new PlayMenuFrame().setVisible(true);
             }
         });
+        this.dispose();
     }//GEN-LAST:event_nameButtonActionPerformed
 
     /**

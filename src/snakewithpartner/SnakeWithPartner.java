@@ -20,7 +20,7 @@ import snakewithpartner.frames.PlayMenuFrame;
  */
 public class SnakeWithPartner {
 
-    private static MainFrame mainFrame;
+    public static MainFrame mainFrame;
     public static EnterPlayerName enterPlayerName;
     public static PlayMenuFrame playMenuFrame;
 
