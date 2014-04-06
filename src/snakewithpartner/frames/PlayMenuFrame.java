@@ -6,6 +6,8 @@
 
 package snakewithpartner.frames;
 
+import snakewithpartner.SnakeWithPartner;
+
 /**
  *
  * @author josh
@@ -34,6 +36,7 @@ public class PlayMenuFrame extends javax.swing.JFrame {
         playHardButton = new javax.swing.JButton();
         playEasyButton = new javax.swing.JButton();
         playMediumButton = new javax.swing.JButton();
+        mainMenuButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,7 +46,7 @@ public class PlayMenuFrame extends javax.swing.JFrame {
         playMenuTitlePanel.setBackground(new java.awt.Color(0, 153, 0));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.white);
+        jLabel1.setForeground(java.awt.Color.black);
         jLabel1.setText("Pick your difficulty");
 
         javax.swing.GroupLayout playMenuTitlePanelLayout = new javax.swing.GroupLayout(playMenuTitlePanel);
@@ -64,27 +67,55 @@ public class PlayMenuFrame extends javax.swing.JFrame {
 
         playHardButton.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         playHardButton.setText("Hard");
+        playHardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playHardButtonActionPerformed(evt);
+            }
+        });
 
         playEasyButton.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         playEasyButton.setText("Easy");
+        playEasyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playEasyButtonActionPerformed(evt);
+            }
+        });
 
         playMediumButton.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         playMediumButton.setText("Medium");
+        playMediumButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playMediumButtonActionPerformed(evt);
+            }
+        });
+
+        mainMenuButton.setText("Main Menu");
+        mainMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout playMenuPanelLayout = new javax.swing.GroupLayout(playMenuPanel);
         playMenuPanel.setLayout(playMenuPanelLayout);
         playMenuPanelLayout.setHorizontalGroup(
             playMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(playMenuPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(playMenuTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(playMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(playMenuPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(playMenuTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(playMenuPanelLayout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addGroup(playMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(playEasyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(playMediumButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(playHardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(playMenuPanelLayout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addGroup(playMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(playEasyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(playMediumButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(playHardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(252, 252, 252)
+                .addComponent(mainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         playMenuPanelLayout.setVerticalGroup(
@@ -93,11 +124,13 @@ public class PlayMenuFrame extends javax.swing.JFrame {
                 .addComponent(playMenuTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(playEasyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(playMediumButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(playHardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,43 +147,32 @@ public class PlayMenuFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PlayMenuFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PlayMenuFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PlayMenuFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PlayMenuFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void playEasyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playEasyButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playEasyButtonActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PlayMenuFrame().setVisible(true);
-            }
-        });
-    }
+    private void playMediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playMediumButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playMediumButtonActionPerformed
+
+    private void playHardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playHardButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playHardButtonActionPerformed
+
+    private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    SnakeWithPartner.mainFrame = new MainFrame();
+                    new MainFrame().setVisible(true);
+                }
+            });
+            this.dispose();
+    }//GEN-LAST:event_mainMenuButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton mainMenuButton;
     private javax.swing.JButton playEasyButton;
     private javax.swing.JButton playHardButton;
     private javax.swing.JButton playMediumButton;

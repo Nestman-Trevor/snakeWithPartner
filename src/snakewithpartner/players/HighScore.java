@@ -63,8 +63,7 @@ public class HighScore implements Serializable {
 
     private String userInput;
 
-    public HighScore(String userInput) {
-        this.userInput = userInput;
+    public HighScore() {
     }
 
     public String getHighScoreTitle() {

@@ -12,8 +12,9 @@ import java.util.Random;
 import java.util.Scanner;
 import snakewithpartner.frames.BoardFrame;
 import snakewithpartner.frames.EnterPlayerName;
-import snakewithpartner.frames.HelpMenuFrame;
+import snakewithpartner.frames.HighScoresFrame;
 import snakewithpartner.frames.MainFrame;
+import snakewithpartner.frames.PlayMenuFrame;
 
 /**
  *
@@ -21,10 +22,10 @@ import snakewithpartner.frames.MainFrame;
  */
 public class SnakeWithPartner {
 
-    private static MainFrame mainFrame;
+    public static MainFrame mainFrame;
     public static EnterPlayerName enterPlayerName;
-    public static BoardFrame boardFrame;
-    public static HelpMenuFrame helpMenuFrame;
+    public static PlayMenuFrame playMenuFrame;
+    public static HighScoresFrame highScoresFrame;
 
     String instructions = "Welcome to Snake!\nVersion: 1.0\n"
             + "The goal is to eat the food and not yourself.\n"
