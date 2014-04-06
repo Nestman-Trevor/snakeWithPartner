@@ -120,7 +120,7 @@ public class EnterPlayerName extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 SnakeWithPartner.playMenuFrame = new PlayMenuFrame();
-                new PlayMenuFrame().setVisible(true);
+                SnakeWithPartner.playMenuFrame.setVisible(true);
             }
         });
         this.dispose();

@@ -201,7 +201,7 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     SnakeWithPartner.enterPlayerName = new EnterPlayerName();
-                    new EnterPlayerName().setVisible(true);
+                    SnakeWithPartner.enterPlayerName.setVisible(true);
                 }
         });
         this.dispose();
