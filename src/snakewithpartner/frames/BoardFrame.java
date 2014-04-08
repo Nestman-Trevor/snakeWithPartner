@@ -6,11 +6,14 @@
 
 package snakewithpartner.frames;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author trevornestman
  */
-public class BoardFrame extends javax.swing.JFrame {
+public class BoardFrame extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form board
@@ -29,15 +32,19 @@ public class BoardFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         gameBoardPanal = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        boardTitlePanel = new javax.swing.JPanel();
         boardTitle = new javax.swing.JLabel();
         scoreTitle = new javax.swing.JLabel();
         playerScoreLabel = new javax.swing.JLabel();
         boardPanel = new javax.swing.JPanel();
-        testButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Snake");
+        setAutoRequestFocus(false);
+        setFocusable(false);
+        setFocusableWindowState(false);
+        setMaximumSize(new java.awt.Dimension(540, 640));
+        setMinimumSize(new java.awt.Dimension(540, 640));
         setPreferredSize(new java.awt.Dimension(540, 640));
         setResizable(false);
         setSize(new java.awt.Dimension(540, 640));
@@ -45,8 +52,8 @@ public class BoardFrame extends javax.swing.JFrame {
         gameBoardPanal.setBackground(new java.awt.Color(0, 0, 0));
         gameBoardPanal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boardTitlePanel.setBackground(new java.awt.Color(0, 0, 204));
+        boardTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         boardTitle.setFont(new java.awt.Font("Noteworthy", 1, 48)); // NOI18N
         boardTitle.setForeground(new java.awt.Color(51, 255, 51));
@@ -63,25 +70,25 @@ public class BoardFrame extends javax.swing.JFrame {
         playerScoreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         playerScoreLabel.setText("0\n");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout boardTitlePanelLayout = new javax.swing.GroupLayout(boardTitlePanel);
+        boardTitlePanel.setLayout(boardTitlePanelLayout);
+        boardTitlePanelLayout.setHorizontalGroup(
+            boardTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(boardTitlePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(boardTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scoreTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(boardTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scoreTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                     .addComponent(playerScoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        boardTitlePanelLayout.setVerticalGroup(
+            boardTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(boardTitlePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(boardTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(boardTitlePanelLayout.createSequentialGroup()
                         .addComponent(scoreTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(playerScoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -91,47 +98,34 @@ public class BoardFrame extends javax.swing.JFrame {
 
         boardPanel.setBackground(new java.awt.Color(0, 153, 0));
 
-        testButton.setText("jButton1");
-        testButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout boardPanelLayout = new javax.swing.GroupLayout(boardPanel);
         boardPanel.setLayout(boardPanelLayout);
         boardPanelLayout.setHorizontalGroup(
             boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardPanelLayout.createSequentialGroup()
-                .addContainerGap(208, Short.MAX_VALUE)
-                .addComponent(testButton)
-                .addGap(195, 195, 195))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         boardPanelLayout.setVerticalGroup(
             boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(boardPanelLayout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(testButton)
-                .addContainerGap(315, Short.MAX_VALUE))
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout gameBoardPanalLayout = new javax.swing.GroupLayout(gameBoardPanal);
         gameBoardPanal.setLayout(gameBoardPanalLayout);
         gameBoardPanalLayout.setHorizontalGroup(
             gameBoardPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(boardTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(gameBoardPanalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(boardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         gameBoardPanalLayout.setVerticalGroup(
             gameBoardPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameBoardPanalLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boardTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(boardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,10 +148,6 @@ public class BoardFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
-         playerScoreLabel.setText("hey");
-    }//GEN-LAST:event_testButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -166,10 +156,14 @@ public class BoardFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel boardPanel;
     private javax.swing.JLabel boardTitle;
+    private javax.swing.JPanel boardTitlePanel;
     private javax.swing.JPanel gameBoardPanal;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel playerScoreLabel;
     private javax.swing.JLabel scoreTitle;
-    private javax.swing.JButton testButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

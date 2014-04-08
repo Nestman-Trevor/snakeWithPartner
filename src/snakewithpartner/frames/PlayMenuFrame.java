@@ -148,22 +148,40 @@ public class PlayMenuFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playEasyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playEasyButtonActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    SnakeWithPartner.boardFrame = new BoardFrame();
+                    SnakeWithPartner.boardFrame.setVisible(true);
+                }
+            });
+            this.dispose();
     }//GEN-LAST:event_playEasyButtonActionPerformed
 
     private void playMediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playMediumButtonActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    SnakeWithPartner.boardFrame = new BoardFrame();
+                    SnakeWithPartner.boardFrame.setVisible(true);
+                }
+            });
+            this.dispose();
     }//GEN-LAST:event_playMediumButtonActionPerformed
 
     private void playHardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playHardButtonActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    SnakeWithPartner.boardFrame = new BoardFrame();
+                    SnakeWithPartner.boardFrame.setVisible(true);
+                }
+            });
+            this.dispose();
     }//GEN-LAST:event_playHardButtonActionPerformed
 
     private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     SnakeWithPartner.mainFrame = new MainFrame();
-                    new MainFrame().setVisible(true);
+                    SnakeWithPartner.mainFrame.setVisible(true);
                 }
             });
             this.dispose();

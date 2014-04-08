@@ -28,6 +28,7 @@ public class SnakeWithPartner {
     public static PlayMenuFrame playMenuFrame;
     public static HighScoresFrame highScoresFrame;
     public static HelpMenuFrame helpMenuFrame;
+    public static BoardFrame boardFrame;
 
     String instructions = "Welcome to Snake!\nVersion: 1.0\n"
             + "The goal is to eat the food and not yourself.\n"
