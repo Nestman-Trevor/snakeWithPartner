@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class Time implements Serializable{
     //Current timestamp in seconds
     private long timeStampSecs = System.currentTimeMillis() / 1000;
+    
 
     public Time() {
     }
