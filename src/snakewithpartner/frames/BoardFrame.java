@@ -29,6 +29,9 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener {
      */
     public BoardFrame() {
         initComponents();
+        
+        
+        
     }
 
     /**
