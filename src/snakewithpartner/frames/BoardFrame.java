@@ -3,18 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package snakewithpartner.frames;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Timer;
+import snakewithpartner.Food;
+import snakewithpartner.Snake;
 
 /**
  *
  * @author trevornestman
  */
-public class BoardFrame extends javax.swing.JFrame implements ActionListener{
+public class BoardFrame extends javax.swing.JFrame implements ActionListener {
 
+    private boolean ingame = true;
+
+    private Timer timer;
+    
+    private Snake snake;
+    private Food food;
+    
     /**
      * Creates new form board
      */
@@ -151,7 +160,6 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener{
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel boardPanel;

@@ -5,6 +5,7 @@
  */
 package snakewithpartner;
 
+import java.awt.Image;
 import snakewithpartner.players.Player;
 import java.io.Serializable;
 import java.util.Random;
@@ -15,7 +16,7 @@ import java.util.Random;
  */
 public class Food implements Serializable{
 
-    
+    private Image apple;
     //Score value per food item collected by snake
     private int easyValue = 100;
     

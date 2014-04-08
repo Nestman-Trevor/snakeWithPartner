@@ -6,6 +6,7 @@
 
 package snakewithpartner;
 
+import java.awt.Image;
 import java.io.Serializable;
 
 /**
@@ -18,8 +19,16 @@ import java.io.Serializable;
 public class Snake implements Serializable{
     //current length of snake
     private int length = 3; //snake is 3 sections long at start of game
-    private int xPosition = 0;
-    private int yPosition = 0;
+    private int xPosition = 25;
+    private int yPosition = 10;
+    
+    private boolean downDirection = true;
+    private boolean upDirection = false;
+    private boolean rightDirection = false;
+    private boolean leftDirection = false;
+    
+    private Image head;
+
 
     public Snake() {
     }

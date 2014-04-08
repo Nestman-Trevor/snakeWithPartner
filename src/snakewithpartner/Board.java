@@ -15,8 +15,8 @@ import java.io.Serializable;
 
 public class Board implements Serializable{
     //Height and Width of board in pixels
-    private int height = 400;
-    private int width = 400;
+    private int height = 500;
+    private int width = 500;
     
     /*
     *This will be the board for the game.
