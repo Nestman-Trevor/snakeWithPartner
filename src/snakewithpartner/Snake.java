@@ -7,6 +7,7 @@ package snakewithpartner;
 
 import java.awt.Image;
 import java.io.Serializable;
+import java.util.Arrays;
 import snakewithpartner.enums.Direction;
 import static snakewithpartner.enums.Direction.DOWNARROW;
 import static snakewithpartner.enums.Direction.LEFTARROW;
@@ -20,22 +21,27 @@ import static snakewithpartner.enums.Direction.UPARROW;
 public class Snake implements Serializable {
 
     //current length of snake
-    private int length = 3; //snake is 3 sections long at start of game
+    private int startingLength = 3; //snake is 3 sections long at start of game
     private Direction currentDirection = UPARROW;
     private int xPosition = 25;
     private int yPosition = 10;
+    private TailSection tail[] = new TailSection[startingLength];
+    
 
     private Image head;
 
     public Snake() {
+        for (int i = 0; i < this.tail.length; i++){
+            this.tail[i] = new TailSection(this.xPosition, this.yPosition + i);
+        }
     }
 
-    public int getLength() {
-        return length;
+    public int getStartingLength() {
+        return startingLength;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setStartingLength(int startingLength) {
+        this.startingLength = startingLength;
     }
 
     public Direction getCurrentDirection() {
@@ -84,37 +90,8 @@ public class Snake implements Serializable {
         this.yPosition = yPosition;
     }
 
-    public void moveSnake(int xInput, int yInput) {
-        boolean xIsValid = false;
-        boolean yIsValid = false;
-
-        xIsValid = (xInput >= 0);
-        yIsValid = (yInput >= 0);
-
-        if (xIsValid) {
-            xInput = xPosition;
-        } else {
-            System.out.println("Invalid x value! Please enter new coordinates\n");
-            return;
-        }
-
-        if (yIsValid) {
-            xInput = yPosition;
-        } else {
-            System.out.println("Invalid y value! Please enter new coordinates\n");
-            return;
-        }
-
-        System.out.println("You are at X:");
-        System.out.print(xPosition);
-        System.out.println(" Y:");
-        System.out.print(yPosition);
-        System.out.print("\n");
-        return;
-    }
-
-    public void displaylength() {
-        System.out.println("Snake Length: " + length);
+    public TailSection[] getTail() {
+        return tail;
     }
 
     public void move() {
@@ -135,6 +112,18 @@ public class Snake implements Serializable {
                 //handle exception
                 break;
         }
-        System.out.println("x=" + xPosition + " y=" + yPosition);
+        moveTail();
+        System.out.println("x=" + xPosition + " y=" + yPosition + "; tail=" + tail.length);
+    }
+    
+    public void moveTail(){
+        for (int i = tail.length - 1; i > 0; i--){
+            tail[i] = tail[i-1];
+        }
+        tail[0] = new TailSection(xPosition, yPosition);
+    }
+    
+    public void growTail(){
+        tail = Arrays.copyOf(tail, tail.length + 1);
     }
 }

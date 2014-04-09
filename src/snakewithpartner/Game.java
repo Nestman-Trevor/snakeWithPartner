@@ -53,6 +53,7 @@ public class Game {
             public void actionPerformed(ActionEvent evt) {
                 snake.move();
                 checkBoundaryCollision();
+                checkTailCollision();
                 checkForFood();
             }
         };
@@ -88,6 +89,7 @@ public class Game {
         if ((snake.getxPosition() == food.getxFood()) && (snake.getyPosition() == food.getyFood())){
             System.out.println("You got some food!");
             player.addToScore();
+            snake.growTail();
             food = new Food(board);
             System.out.println("Your score is: " + player.getScore());
         }
@@ -100,6 +102,15 @@ public class Game {
         }
         if ((snake.getyPosition() < 1) || (snake.getyPosition() > 48)) {
             endGame();
+        }
+    }
+    
+    public void checkTailCollision(){
+        TailSection[] tail = snake.getTail();
+        for (int i = 1; i < tail.length; i++){
+            if ((snake.getxPosition() == tail[i].getxCordinate()) && (snake.getyPosition() == tail[i].getyCordinate())){
+                endGame();
+            }
         }
     }
 

@@ -17,7 +17,9 @@ public class TailSection implements Serializable {
     private Image ball;
     private int xCordinate, yCordinate;
 
-    public TailSection() {
+    TailSection(int x, int y) {
+        this.xCordinate = x;
+        this.yCordinate = y;
     }
 
     public int getxCordinate() {
