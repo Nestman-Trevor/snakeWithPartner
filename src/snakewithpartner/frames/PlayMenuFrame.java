@@ -6,6 +6,7 @@
 
 package snakewithpartner.frames;
 
+import snakewithpartner.Game;
 import snakewithpartner.SnakeWithPartner;
 
 /**
@@ -150,7 +151,8 @@ public class PlayMenuFrame extends javax.swing.JFrame {
     private void playEasyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playEasyButtonActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    SnakeWithPartner.boardFrame = new BoardFrame();
+                    Game game = new Game();
+                    SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }
             });
@@ -160,7 +162,8 @@ public class PlayMenuFrame extends javax.swing.JFrame {
     private void playMediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playMediumButtonActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    SnakeWithPartner.boardFrame = new BoardFrame();
+                    Game game = new Game();
+                    SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }
             });
@@ -170,7 +173,8 @@ public class PlayMenuFrame extends javax.swing.JFrame {
     private void playHardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playHardButtonActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    SnakeWithPartner.boardFrame = new BoardFrame();
+                    Game game = new Game();
+                    SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }
             });

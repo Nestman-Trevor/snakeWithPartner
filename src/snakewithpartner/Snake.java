@@ -8,6 +8,8 @@ package snakewithpartner;
 
 import java.awt.Image;
 import java.io.Serializable;
+import snakewithpartner.enums.Direction;
+import static snakewithpartner.enums.Direction.UPARROW;
 
 /**
  *
@@ -19,13 +21,9 @@ import java.io.Serializable;
 public class Snake implements Serializable{
     //current length of snake
     private int length = 3; //snake is 3 sections long at start of game
+    private Direction currentDirection = UPARROW;
     private int xPosition = 25;
     private int yPosition = 10;
-    
-    private boolean downDirection = true;
-    private boolean upDirection = false;
-    private boolean rightDirection = false;
-    private boolean leftDirection = false;
     
     private Image head;
 
@@ -40,6 +38,16 @@ public class Snake implements Serializable{
     public void setLength(int length) {
         this.length = length;
     }
+
+    public Direction getCurrentDirection() {
+        return currentDirection;
+    }
+
+    public void setCurrentDirection(Direction currentDirection) {
+        this.currentDirection = currentDirection;
+    }
+    
+    
 
     public int getxPosition() {
         return xPosition;
@@ -93,5 +101,26 @@ public class Snake implements Serializable{
     
     public void displaylength(){
         System.out.println("Snake Length: " + length);
+    }
+    
+    public void move(){
+        switch (currentDirection){
+            case UPARROW:
+                yPosition--;
+                break;
+            case DOWNARROW:
+                yPosition++;
+                break;
+            case LEFTARROW:
+                xPosition--;
+                break;
+            case RIGHTARROW:
+                xPosition++;
+                break;
+            default:
+                //handle exception
+                break;
+        }
+        System.out.println("x=" + xPosition + " y=" + yPosition);
     }
 }

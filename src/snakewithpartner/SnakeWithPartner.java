@@ -5,6 +5,7 @@
  */
 package snakewithpartner;
 
+import java.awt.event.ActionEvent;
 import snakewithpartner.menus.HelpMenuView;
 import snakewithpartner.menus.MainMenuView;
 import snakewithpartner.menus.PlayMenuView;
@@ -76,9 +77,8 @@ public class SnakeWithPartner {
             });
         } catch (Throwable ex) {
             System.out.println("ERROR: Unexpected error" + ex.getMessage());
-        }
-        finally{
-            if(SnakeWithPartner.mainFrame != null){
+        } finally {
+            if (SnakeWithPartner.mainFrame != null) {
                 SnakeWithPartner.mainFrame.dispose();
             }
         }
