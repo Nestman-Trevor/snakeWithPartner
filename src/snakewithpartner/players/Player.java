@@ -72,30 +72,21 @@ public class Player implements Serializable {
     }
 
     //Add to score
-    public void scoreAdd() {
-        //Player's inputed score
-        String userScore = null;
-        //user input is "done"
-        boolean done = false;
-        Scanner input = SnakeWithPartner.getInFile();
-        System.out.println("Enter your score (or \"done\" to stop): ");
-        do {
-            userScore = input.next(); //no need to exception handling here, this line is for testing only.
-            switch (userScore) {
-                case "100":
-                    score += 100;
-                    System.out.println("Enter your score again (\"done\" to stop) : ");
-                    break;
-                case "done":
-                    done = true;
-                    break;
-                default:
-                    score -= 100;
-                    System.out.println("Enter \"100\" or \"done\"\nEnter your score:");
-                    break;
-            }
-        } while (done != true);
-        System.out.println("Total score = " + score);
+    public void addToScore() {
+        switch (this.difficulty){
+            case EASY:
+                this.score += 100;
+                break;
+            case MEDIUM:
+                this.score += 150;
+                break;
+            case HARD:
+                this.score += 200;
+                break;
+            default:
+                //handle error
+                break;
+        }
     }
 
 }

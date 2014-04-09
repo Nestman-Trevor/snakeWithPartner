@@ -158,9 +158,9 @@ public class PlayMenuFrame extends javax.swing.JFrame {
     private void playEasyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playEasyButtonActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    Game game = new Game();
                     player.setDifficulty(EASY);
-                    game.initGame(player);
+                    Game game = new Game(player);
+                    game.initGame();
                     SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }
@@ -171,9 +171,9 @@ public class PlayMenuFrame extends javax.swing.JFrame {
     private void playMediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playMediumButtonActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    Game game = new Game();
                     player.setDifficulty(MEDIUM);
-                    game.initGame(player);
+                    Game game = new Game(player);
+                    game.initGame();
                     SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }
@@ -184,9 +184,9 @@ public class PlayMenuFrame extends javax.swing.JFrame {
     private void playHardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playHardButtonActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    Game game = new Game();
                     player.setDifficulty(HARD);
-                    game.initGame(player);
+                    Game game = new Game(player);
+                    game.initGame();
                     SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }

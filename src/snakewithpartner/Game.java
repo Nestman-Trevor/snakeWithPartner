@@ -24,8 +24,15 @@ public class Game {
     Snake snake = new Snake();
     Timer timer;
     boolean inGame = false;
+    Player player;
+    Food food;
+    Board board = new Board();
 
-    public void initGame(Player player) {
+    public Game(Player player) {
+        this.player = player;
+    }
+
+    public void initGame() {
         switch (player.getDifficulty()) {
             case EASY:
                 speed = 1000;
@@ -46,8 +53,10 @@ public class Game {
             public void actionPerformed(ActionEvent evt) {
                 snake.move();
                 checkBoundaryCollision();
+                checkForFood();
             }
         };
+        food = new Food(board);
         timer = new Timer(speed, taskPerformer);
         timer.start();
         inGame = true;
@@ -72,6 +81,15 @@ public class Game {
             case KeyEvent.VK_RIGHT:
                 snake.setCurrentDirection(Direction.RIGHTARROW);
                 break;
+        }
+    }
+    
+    public void checkForFood(){
+        if ((snake.getxPosition() == food.getxFood()) && (snake.getyPosition() == food.getyFood())){
+            System.out.println("You got some food!");
+            player.addToScore();
+            food = new Food(board);
+            System.out.println("Your score is: " + player.getScore());
         }
     }
 

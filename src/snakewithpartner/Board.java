@@ -15,8 +15,8 @@ import java.io.Serializable;
 
 public class Board implements Serializable{
     //Height and Width of board in pixels
-    private int height = 500;
-    private int width = 500;
+    private int height = 50;
+    private int width = 50;
     
     /*
     *This will be the board for the game.
@@ -27,9 +27,7 @@ public class Board implements Serializable{
     *       3 = head
     *       4 = tail
     */
-    private int[][] board = new int[50][50];
-    
-    Food food = new Food();
+    private int[][] board = new int[width][height];
     
     public int getHeight() {
         return height;
@@ -80,10 +78,6 @@ public class Board implements Serializable{
                 }
             }
         }
-    }
-    //add food to the board
-    public void foodToBoard(){
-        board = food.newFood(board);
     }
     
 }

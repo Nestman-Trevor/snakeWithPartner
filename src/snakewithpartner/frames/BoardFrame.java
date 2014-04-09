@@ -7,12 +7,7 @@ package snakewithpartner.frames;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import javax.swing.Timer;
-import snakewithpartner.Food;
 import snakewithpartner.Game;
-import snakewithpartner.Snake;
-import snakewithpartner.enums.Direction;
 
 /**
  *
