@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package snakewithpartner.frames;
 
 import snakewithpartner.SnakeWithPartner;
@@ -114,12 +113,12 @@ public class EnterPlayerName extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameButtonActionPerformed
-        String playerName = playerNameField.getText();
-        Player player = new Player();
-        player.setName(playerName);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SnakeWithPartner.playMenuFrame = new PlayMenuFrame();
+                String playerName = playerNameField.getText();
+                Player player = new Player();
+                player.setName(playerName);
+                SnakeWithPartner.playMenuFrame = new PlayMenuFrame(player);
                 SnakeWithPartner.playMenuFrame.setVisible(true);
             }
         });

@@ -77,19 +77,17 @@ public class Game {
 
     public void checkBoundaryCollision() {
         if ((snake.getxPosition() < 1) || (snake.getxPosition() > 48)) {
-            System.out.println("Game Over");
-            this.timer.stop();
-            inGame = false;
+            endGame();
 
         }
         if ((snake.getyPosition() < 1) || (snake.getyPosition() > 48)) {
-
+            endGame();
         }
     }
-    
-    public void endGame(){
-            System.out.println("Game Over");
-            this.timer.stop();
-            inGame = false;
+
+    public void endGame() {
+        System.out.println("Game Over");
+        this.timer.stop();
+        inGame = false;
     }
 }

@@ -8,18 +8,25 @@ package snakewithpartner.frames;
 
 import snakewithpartner.Game;
 import snakewithpartner.SnakeWithPartner;
+import static snakewithpartner.enums.Difficulty.EASY;
+import static snakewithpartner.enums.Difficulty.HARD;
+import static snakewithpartner.enums.Difficulty.MEDIUM;
+import snakewithpartner.players.Player;
 
 /**
  *
  * @author josh
  */
 public class PlayMenuFrame extends javax.swing.JFrame {
+    
+    Player  player;
 
     /**
      * Creates new form PlayMenuFrame
      */
-    public PlayMenuFrame() {
+    public PlayMenuFrame(Player player) {
         initComponents();
+        this.player = player;
     }
 
     /**
@@ -152,6 +159,8 @@ public class PlayMenuFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     Game game = new Game();
+                    player.setDifficulty(EASY);
+                    game.initGame(player);
                     SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }
@@ -163,6 +172,8 @@ public class PlayMenuFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     Game game = new Game();
+                    player.setDifficulty(MEDIUM);
+                    game.initGame(player);
                     SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }
@@ -174,6 +185,8 @@ public class PlayMenuFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     Game game = new Game();
+                    player.setDifficulty(HARD);
+                    game.initGame(player);
                     SnakeWithPartner.boardFrame = new BoardFrame(game);
                     SnakeWithPartner.boardFrame.setVisible(true);
                 }
