@@ -161,8 +161,6 @@ public class PlayMenuFrame extends javax.swing.JFrame {
                     player.setDifficulty(EASY);
                     Game game = new Game(player);
                     game.initGame();
-                    SnakeWithPartner.boardFrame = new BoardFrame(game);
-                    SnakeWithPartner.boardFrame.setVisible(true);
                 }
             });
             this.dispose();
@@ -174,8 +172,6 @@ public class PlayMenuFrame extends javax.swing.JFrame {
                     player.setDifficulty(MEDIUM);
                     Game game = new Game(player);
                     game.initGame();
-                    SnakeWithPartner.boardFrame = new BoardFrame(game);
-                    SnakeWithPartner.boardFrame.setVisible(true);
                 }
             });
             this.dispose();
@@ -187,8 +183,6 @@ public class PlayMenuFrame extends javax.swing.JFrame {
                     player.setDifficulty(HARD);
                     Game game = new Game(player);
                     game.initGame();
-                    SnakeWithPartner.boardFrame = new BoardFrame(game);
-                    SnakeWithPartner.boardFrame.setVisible(true);
                 }
             });
             this.dispose();

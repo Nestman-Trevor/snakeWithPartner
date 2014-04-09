@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 import static snakewithpartner.enums.Difficulty.*;
 import snakewithpartner.enums.Direction;
+import snakewithpartner.frames.BoardFrame;
 import snakewithpartner.players.Player;
 
 /**
@@ -27,6 +28,7 @@ public class Game {
     Player player;
     Food food;
     Board board = new Board();
+    BoardFrame boardFrame;
 
     public Game(Player player) {
         this.player = player;
@@ -46,6 +48,10 @@ public class Game {
             default:
                 break;
         }
+
+        SnakeWithPartner.boardFrame = new BoardFrame(this);
+        SnakeWithPartner.boardFrame.setVisible(true);
+        SnakeWithPartner.boardFrame.buildSnake(snake);
     }
 
     public void startSnake() {
@@ -84,9 +90,9 @@ public class Game {
                 break;
         }
     }
-    
-    public void checkForFood(){
-        if ((snake.getxPosition() == food.getxFood()) && (snake.getyPosition() == food.getyFood())){
+
+    public void checkForFood() {
+        if ((snake.getxPosition() == food.getxFood()) && (snake.getyPosition() == food.getyFood())) {
             System.out.println("You got some food!");
             player.addToScore();
             snake.growTail();
@@ -104,11 +110,11 @@ public class Game {
             endGame();
         }
     }
-    
-    public void checkTailCollision(){
+
+    public void checkTailCollision() {
         TailSection[] tail = snake.getTail();
-        for (int i = 1; i < tail.length; i++){
-            if ((snake.getxPosition() == tail[i].getxCordinate()) && (snake.getyPosition() == tail[i].getyCordinate())){
+        for (int i = 1; i < tail.length; i++) {
+            if ((snake.getxPosition() == tail[i].getxCordinate()) && (snake.getyPosition() == tail[i].getyCordinate())) {
                 endGame();
             }
         }

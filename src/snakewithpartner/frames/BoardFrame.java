@@ -5,9 +5,14 @@
  */
 package snakewithpartner.frames;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 import snakewithpartner.Game;
+import snakewithpartner.Snake;
+import snakewithpartner.TailSection;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -16,6 +21,8 @@ import snakewithpartner.Game;
 public class BoardFrame extends javax.swing.JFrame implements ActionListener {
 
     Game game;
+    ImageIcon icon = new ImageIcon("circle.jpg");
+    JLabel[] tailLabels;
 
     /**
      * Creates new form board
@@ -25,7 +32,24 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener {
     public BoardFrame(Game game) {
         initComponents();
         boardPanel.requestFocusInWindow();
+        boardPanel.setLayout(null);
         this.game = game;
+    }
+
+    public void buildSnake(Snake snake) {
+        TailSection[] tail = snake.getTail();
+        for (int i = 0; i < tail.length; i++) {
+            tailLabels = new JLabel[tail.length];
+            tailLabels[i] = new javax.swing.JLabel(icon);
+            boardPanel.add(tailLabels[i]);
+            tailLabels[i].setLocation(tail[i].getxCordinate() * 10, tail[i].getyCordinate() * 10);
+            tailLabels[i].setSize(10, 10);
+            tailLabels[i].setBackground(Color.black);
+        }
+    }
+    
+    public void moveSnake(){
+        
     }
 
     /**
@@ -38,6 +62,7 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         gameBoardPanel = new javax.swing.JPanel();
         boardTitlePanel = new javax.swing.JPanel();
         boardTitle = new javax.swing.JLabel();
@@ -51,6 +76,8 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener {
                 jTextField1KeyPressed(evt);
             }
         });
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Snake");
@@ -88,7 +115,7 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener {
                 .addComponent(boardTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(boardTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scoreTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(scoreTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(playerScoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -179,6 +206,7 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel boardTitle;
     private javax.swing.JPanel boardTitlePanel;
     private javax.swing.JPanel gameBoardPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel playerScoreLabel;
     private javax.swing.JLabel scoreTitle;
