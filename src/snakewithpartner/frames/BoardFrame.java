@@ -13,6 +13,8 @@ import snakewithpartner.Game;
 import snakewithpartner.Snake;
 import snakewithpartner.TailSection;
 import javax.swing.ImageIcon;
+import snakewithpartner.Food;
+import snakewithpartner.players.Player;
 
 /**
  *
@@ -21,35 +23,53 @@ import javax.swing.ImageIcon;
 public class BoardFrame extends javax.swing.JFrame implements ActionListener {
 
     Game game;
+    Snake snake;
     ImageIcon icon = new ImageIcon("circle.jpg");
     JLabel[] tailLabels;
+    JLabel foodLabel;
 
     /**
      * Creates new form board
      *
      * @param game
      */
-    public BoardFrame(Game game) {
+    public BoardFrame(Game game, Snake snake) {
         initComponents();
         boardPanel.requestFocusInWindow();
         boardPanel.setLayout(null);
         this.game = game;
+        this.snake = snake;
     }
 
-    public void buildSnake(Snake snake) {
+    public BoardFrame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void paintBoard(Snake snake, Food food, Player player) {
         TailSection[] tail = snake.getTail();
+        boardPanel.removeAll();
+        boardPanel.revalidate();
+        boardPanel.repaint();
+        
+        //paint snake
         for (int i = 0; i < tail.length; i++) {
             tailLabels = new JLabel[tail.length];
-            tailLabels[i] = new javax.swing.JLabel(icon);
+            tailLabels[i] = new javax.swing.JLabel("O");
             boardPanel.add(tailLabels[i]);
             tailLabels[i].setLocation(tail[i].getxCordinate() * 10, tail[i].getyCordinate() * 10);
             tailLabels[i].setSize(10, 10);
-            tailLabels[i].setBackground(Color.black);
         }
-    }
-    
-    public void moveSnake(){
         
+        //paint food
+            foodLabel = new JLabel();
+            foodLabel = new javax.swing.JLabel("X");
+            boardPanel.add(foodLabel);
+            foodLabel.setLocation(food.getxFood() * 10, food.getyFood() * 10);
+            foodLabel.setSize(10, 10);
+            foodLabel.setForeground(Color.magenta );
+            
+       //paint player score
+            playerScoreLabel.setText(Integer.toString(player.getScore()));
     }
 
     /**
@@ -81,7 +101,6 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Snake");
-        setAutoRequestFocus(false);
         setMinimumSize(new java.awt.Dimension(540, 640));
         setResizable(false);
 
@@ -104,7 +123,6 @@ public class BoardFrame extends javax.swing.JFrame implements ActionListener {
         playerScoreLabel.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         playerScoreLabel.setForeground(new java.awt.Color(255, 51, 102));
         playerScoreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        playerScoreLabel.setText("0\n");
 
         javax.swing.GroupLayout boardTitlePanelLayout = new javax.swing.GroupLayout(boardTitlePanel);
         boardTitlePanel.setLayout(boardTitlePanelLayout);

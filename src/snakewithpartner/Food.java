@@ -9,6 +9,8 @@ import java.awt.Image;
 import snakewithpartner.players.Player;
 import java.io.Serializable;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -96,6 +98,9 @@ public class Food implements Serializable {
         }
     }
 
+    public void throwAway() throws Throwable {
+            this.finalize();
+    }
 //    public int[][] newFood(int[][] board) {
 //        Random generator = SnakeWithPartner.getGenerator();
 //        //integers used to place down food

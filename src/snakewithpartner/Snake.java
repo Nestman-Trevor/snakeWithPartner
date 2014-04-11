@@ -8,6 +8,8 @@ package snakewithpartner;
 import java.awt.Image;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import snakewithpartner.enums.Direction;
 import static snakewithpartner.enums.Direction.DOWNARROW;
 import static snakewithpartner.enums.Direction.LEFTARROW;
@@ -46,6 +48,10 @@ public class Snake implements Serializable {
 
     public Direction getCurrentDirection() {
         return currentDirection;
+    }
+    
+    public void kill() throws Throwable{
+            this.finalize();
     }
 
     public void setCurrentDirection(Direction currentDirection) {

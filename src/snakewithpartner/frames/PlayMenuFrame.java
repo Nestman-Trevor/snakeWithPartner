@@ -54,7 +54,6 @@ public class PlayMenuFrame extends javax.swing.JFrame {
         playMenuTitlePanel.setBackground(new java.awt.Color(0, 153, 0));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.black);
         jLabel1.setText("Pick your difficulty");
 
         javax.swing.GroupLayout playMenuTitlePanelLayout = new javax.swing.GroupLayout(playMenuTitlePanel);

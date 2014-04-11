@@ -53,6 +53,10 @@ public class Board implements Serializable{
         this.board = board;
     }
     
+    public void burn() throws Throwable{
+        this.finalize();
+    }
+    
     //Display board's height and width
     public void displayBoardSize(){
         System.out.println("The board is " + height + " pixels by " + width + "pixels");

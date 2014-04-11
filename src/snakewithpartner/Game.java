@@ -8,10 +8,13 @@ package snakewithpartner;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 import static snakewithpartner.enums.Difficulty.*;
 import snakewithpartner.enums.Direction;
 import snakewithpartner.frames.BoardFrame;
+import snakewithpartner.frames.GameOverFrame;
 import snakewithpartner.players.Player;
 
 /**
@@ -27,7 +30,7 @@ public class Game {
     boolean inGame = false;
     Player player;
     Food food;
-    Board board = new Board();
+    Board board;
     BoardFrame boardFrame;
 
     public Game(Player player) {
@@ -37,33 +40,34 @@ public class Game {
     public void initGame() {
         switch (player.getDifficulty()) {
             case EASY:
-                speed = 1000;
+                speed = 300;
                 break;
             case MEDIUM:
-                speed = 500;
+                speed = 200;
                 break;
             case HARD:
-                speed = 200;
+                speed = 50;
                 break;
             default:
                 break;
         }
-
-        SnakeWithPartner.boardFrame = new BoardFrame(this);
+        board = new Board();
+        food = new Food(board);
+        SnakeWithPartner.boardFrame = new BoardFrame(this, snake);
         SnakeWithPartner.boardFrame.setVisible(true);
-        SnakeWithPartner.boardFrame.buildSnake(snake);
+        SnakeWithPartner.boardFrame.paintBoard(snake, food, player);
     }
 
     public void startSnake() {
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 snake.move();
+                SnakeWithPartner.boardFrame.paintBoard(snake, food, player);
                 checkBoundaryCollision();
                 checkTailCollision();
                 checkForFood();
             }
         };
-        food = new Food(board);
         timer = new Timer(speed, taskPerformer);
         timer.start();
         inGame = true;
@@ -123,6 +127,17 @@ public class Game {
     public void endGame() {
         System.out.println("Game Over");
         this.timer.stop();
+        SnakeWithPartner.boardFrame.dispose();
+        SnakeWithPartner.GameOverFrame = new GameOverFrame(player);
+        SnakeWithPartner.GameOverFrame.setVisible(true);
         inGame = false;
+        try {
+            this.finalize();
+            snake.kill();
+            food.throwAway();
+            board.burn();
+        } catch (Throwable ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
