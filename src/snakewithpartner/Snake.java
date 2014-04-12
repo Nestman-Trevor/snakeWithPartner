@@ -25,6 +25,7 @@ public class Snake implements Serializable {
     //current length of snake
     private int startingLength = 3; //snake is 3 sections long at start of game
     private Direction currentDirection = UPARROW;
+    private Direction desiredDirection = UPARROW;
     private int xPosition = 25;
     private int yPosition = 10;
     private TailSection tail[] = new TailSection[startingLength];
@@ -54,30 +55,29 @@ public class Snake implements Serializable {
             this.finalize();
     }
 
-    public void setCurrentDirection(Direction currentDirection) {
-        switch (currentDirection) {
+    public void setCurrentDirection(Direction desiredDirection) {
+        switch (desiredDirection) {
             case UPARROW:
                 if (this.currentDirection != DOWNARROW) {
-                    this.currentDirection = currentDirection;
+                    this.desiredDirection = UPARROW;
                 }
                 break;
             case DOWNARROW:
                 if (this.currentDirection != UPARROW) {
-                    this.currentDirection = currentDirection;
+                    this.desiredDirection = DOWNARROW;
                 }
                 break;
             case LEFTARROW:
                 if (this.currentDirection != RIGHTARROW) {
-                    this.currentDirection = currentDirection;
+                    this.desiredDirection = LEFTARROW;
                 }
                 break;
             case RIGHTARROW:
                 if (this.currentDirection != LEFTARROW) {
-                    this.currentDirection = currentDirection;
+                    this.desiredDirection = RIGHTARROW;
                 }
                 break;
         }
-        this.currentDirection = currentDirection;
     }
 
     public int getxPosition() {
@@ -101,6 +101,7 @@ public class Snake implements Serializable {
     }
 
     public void move() {
+        currentDirection = desiredDirection;
         switch (currentDirection) {
             case UPARROW:
                 yPosition--;
