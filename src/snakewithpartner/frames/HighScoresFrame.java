@@ -38,16 +38,17 @@ public class HighScoresFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        highScore1 = new javax.swing.JLabel();
+        highScore2 = new javax.swing.JLabel();
+        highScore3 = new javax.swing.JLabel();
+        highScore4 = new javax.swing.JLabel();
+        highScore5 = new javax.swing.JLabel();
+        highScore6 = new javax.swing.JLabel();
+        highScore7 = new javax.swing.JLabel();
+        highScore8 = new javax.swing.JLabel();
+        highScore9 = new javax.swing.JLabel();
+        highScore10 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -82,35 +83,37 @@ public class HighScoresFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel2.setText("High Scores");
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel3.setText("1:");
+        highScore1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore1.setText("1:");
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel4.setText("2:");
+        highScore2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore2.setText("2:");
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel5.setText("3:");
+        highScore3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore3.setText("3:");
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel6.setText("4:");
+        highScore4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore4.setText("4:");
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel7.setText("5:");
+        highScore5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore5.setText("5:");
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel8.setText("6:");
+        highScore6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore6.setText("6:");
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel9.setText("7:");
+        highScore7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore7.setText("7:");
 
-        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel10.setText("8:");
+        highScore8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore8.setText("8:");
 
-        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel11.setText("9:");
+        highScore9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore9.setText("9:");
 
-        jLabel12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel12.setText("10:");
+        highScore10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        highScore10.setText("10:");
+
+        jLabel13.setText("jLabel13");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,17 +127,20 @@ public class HighScoresFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(highScore10)
+                    .addComponent(highScore9)
+                    .addComponent(highScore8)
+                    .addComponent(highScore7)
+                    .addComponent(highScore6)
+                    .addComponent(highScore5)
+                    .addComponent(highScore4)
+                    .addComponent(highScore3)
+                    .addComponent(highScore2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(highScore1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,25 +151,27 @@ public class HighScoresFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(highScore2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(highScore3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(highScore4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(highScore5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addComponent(highScore6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addComponent(highScore7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
+                .addComponent(highScore8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
+                .addComponent(highScore9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
+                .addComponent(highScore10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -183,19 +191,20 @@ public class HighScoresFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel highScore1;
+    private javax.swing.JLabel highScore10;
+    private javax.swing.JLabel highScore2;
+    private javax.swing.JLabel highScore3;
+    private javax.swing.JLabel highScore4;
+    private javax.swing.JLabel highScore5;
+    private javax.swing.JLabel highScore6;
+    private javax.swing.JLabel highScore7;
+    private javax.swing.JLabel highScore8;
+    private javax.swing.JLabel highScore9;
     private javax.swing.JTextArea highScoreArea;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
