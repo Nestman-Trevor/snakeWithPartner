@@ -188,20 +188,20 @@ public class HighScore implements Serializable {
                 switch (player.getDifficulty()) {
                     case EASY:
                         for (int k = 0; k < (newHighScores.length - 1); k++) {
-                            easyHighScores[k][0] = newHighScores[k][0];
-                            easyHighScores[k][1] = newHighScores[k][1];
+                            this.easyHighScores[k][0] = newHighScores[k][0];
+                            this.easyHighScores[k][1] = newHighScores[k][1];
                         }
                         return true;
                     case MEDIUM:
                         for (int k = 0; k < (newHighScores.length - 1); k++) {
-                            mediumHighScores[k][0] = newHighScores[k][0];
-                            mediumHighScores[k][1] = newHighScores[k][1];
+                            this.mediumHighScores[k][0] = newHighScores[k][0];
+                            this.mediumHighScores[k][1] = newHighScores[k][1];
                         }
                         return true;
                     case HARD:
                         for (int k = 0; k < (newHighScores.length - 1); k++) {
-                            hardHighScores[k][0] = newHighScores[k][0];
-                            hardHighScores[k][1] = newHighScores[k][1];
+                            this.hardHighScores[k][0] = newHighScores[k][0];
+                            this.hardHighScores[k][1] = newHighScores[k][1];
                         }
                         return true;
                     default:

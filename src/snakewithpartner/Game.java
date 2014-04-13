@@ -34,6 +34,7 @@ public class Game {
     Board board;
     BoardFrame boardFrame;
     HighScore highScore;
+    boolean isPaused = false;
 
     public Game(Player player) {
         this.player = player;
@@ -94,6 +95,14 @@ public class Game {
                 break;
             case KeyEvent.VK_RIGHT:
                 snake.setCurrentDirection(Direction.RIGHTARROW);
+                break;
+            case KeyEvent.VK_P:
+                isPaused = !isPaused;
+                if(isPaused){timer.stop();}
+                else{timer.start();}
+                break;
+            case KeyEvent.VK_Q:
+                this.endGame();
                 break;
         }
     }
