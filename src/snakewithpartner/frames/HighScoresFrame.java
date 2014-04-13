@@ -6,18 +6,23 @@
 
 package snakewithpartner.frames;
 
+import snakewithpartner.SnakeWithPartner;
+import snakewithpartner.players.HighScore;
+
 /**
  *
  * @author josh
  */
 public class HighScoresFrame extends javax.swing.JFrame {
+    
+    HighScore highScore;
 
     /**
      * Creates new form HighScoresFrame
      */
     public HighScoresFrame() {
         initComponents();
-        this.highScoreArea.setText("This is where the High Scores will display.");
+        this.highScore = SnakeWithPartner.getHighScore();
     }
 
     /**
@@ -35,7 +40,7 @@ public class HighScoresFrame extends javax.swing.JFrame {
         textArea1 = new java.awt.TextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         highScoreArea = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
+        highScorePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         highScore1 = new javax.swing.JLabel();
@@ -48,7 +53,20 @@ public class HighScoresFrame extends javax.swing.JFrame {
         highScore8 = new javax.swing.JLabel();
         highScore9 = new javax.swing.JLabel();
         highScore10 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        highScoreValueLabel1 = new javax.swing.JLabel();
+        highScoreValueLabel2 = new javax.swing.JLabel();
+        highScoreValueLabel3 = new javax.swing.JLabel();
+        highScoreValueLabel4 = new javax.swing.JLabel();
+        highScoreValueLabel5 = new javax.swing.JLabel();
+        highScoreValueLabel6 = new javax.swing.JLabel();
+        highScoreValueLabel7 = new javax.swing.JLabel();
+        highScoreValueLabel8 = new javax.swing.JLabel();
+        highScoreValueLabel9 = new javax.swing.JLabel();
+        highScoreValueLabel10 = new javax.swing.JLabel();
+        easyButton = new javax.swing.JButton();
+        mediumButton = new javax.swing.JButton();
+        hardButton = new javax.swing.JButton();
+        mainMenuButton = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -64,8 +82,17 @@ public class HighScoresFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        highScorePanel.setBackground(new java.awt.Color(0, 153, 0));
+        highScorePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        highScorePanel.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                highScorePanelAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 0));
 
@@ -113,65 +140,123 @@ public class HighScoresFrame extends javax.swing.JFrame {
         highScore10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         highScore10.setText("10:");
 
-        jLabel13.setText("jLabel13");
+        easyButton.setText("Easy Scores");
+        easyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                easyButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        mediumButton.setText("Medium Scores");
+        mediumButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mediumButtonActionPerformed(evt);
+            }
+        });
+
+        hardButton.setText("Hard Scores");
+
+        mainMenuButton.setText("Main Menu");
+        mainMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout highScorePanelLayout = new javax.swing.GroupLayout(highScorePanel);
+        highScorePanel.setLayout(highScorePanelLayout);
+        highScorePanelLayout.setHorizontalGroup(
+            highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(highScorePanelLayout.createSequentialGroup()
                 .addGap(212, 212, 212)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(highScore10)
-                    .addComponent(highScore9)
-                    .addComponent(highScore8)
-                    .addComponent(highScore7)
-                    .addComponent(highScore6)
-                    .addComponent(highScore5)
-                    .addComponent(highScore4)
-                    .addComponent(highScore3)
+            .addGroup(highScorePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(easyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mediumButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(highScore1)
                     .addComponent(highScore2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(highScore1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(highScore3)
+                    .addComponent(highScore4)
+                    .addComponent(highScore5)
+                    .addComponent(highScore6)
+                    .addComponent(highScore7)
+                    .addComponent(highScore8)
+                    .addComponent(highScore9)
+                    .addComponent(highScore10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(highScoreValueLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(highScoreValueLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        highScorePanelLayout.setVerticalGroup(
+            highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(highScorePanelLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 296, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 337, Short.MAX_VALUE))
+            .addGroup(highScorePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(32, 32, 32)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(highScore1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(highScoreValueLabel1)
+                    .addComponent(easyButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore2)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore2)
+                    .addComponent(highScoreValueLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore3)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore3)
+                    .addComponent(highScoreValueLabel3)
+                    .addComponent(mediumButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore4)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore4)
+                    .addComponent(highScoreValueLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore5)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore5)
+                    .addComponent(highScoreValueLabel5)
+                    .addComponent(hardButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore6)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore6)
+                    .addComponent(highScoreValueLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore7)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore7)
+                    .addComponent(highScoreValueLabel7)
+                    .addComponent(mainMenuButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore8)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore8)
+                    .addComponent(highScoreValueLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore9)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore9)
+                    .addComponent(highScoreValueLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(highScore10)
+                .addGroup(highScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(highScore10)
+                    .addComponent(highScoreValueLabel10))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -179,18 +264,72 @@ public class HighScoresFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(highScorePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(highScorePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void easyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonActionPerformed
+        String scores[][] = highScore.getEasyHighScores();
+        highScoreValueLabel1.setText(scores[0][0] + ": " + scores[0][1]);
+        highScoreValueLabel2.setText(scores[1][0] + ": " + scores[1][1]);
+        highScoreValueLabel3.setText(scores[2][0] + ": " + scores[2][1]);
+        highScoreValueLabel4.setText(scores[3][0] + ": " + scores[3][1]);
+        highScoreValueLabel5.setText(scores[4][0] + ": " + scores[4][1]);
+        highScoreValueLabel6.setText(scores[5][0] + ": " + scores[5][1]);
+        highScoreValueLabel7.setText(scores[6][0] + ": " + scores[6][1]);
+        highScoreValueLabel8.setText(scores[7][0] + ": " + scores[7][1]);
+        highScoreValueLabel9.setText(scores[8][0] + ": " + scores[8][1]);
+        highScoreValueLabel10.setText(scores[9][0] + ": " + scores[9][1]);
+    }//GEN-LAST:event_easyButtonActionPerformed
+
+    private void mediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonActionPerformed
+        String scores[][] = highScore.getMediumHighScores();
+        highScoreValueLabel1.setText(scores[0][0] + ": " + scores[0][1]);
+        highScoreValueLabel2.setText(scores[1][0] + ": " + scores[1][1]);
+        highScoreValueLabel3.setText(scores[2][0] + ": " + scores[2][1]);
+        highScoreValueLabel4.setText(scores[3][0] + ": " + scores[3][1]);
+        highScoreValueLabel5.setText(scores[4][0] + ": " + scores[4][1]);
+        highScoreValueLabel6.setText(scores[5][0] + ": " + scores[5][1]);
+        highScoreValueLabel7.setText(scores[6][0] + ": " + scores[6][1]);
+        highScoreValueLabel8.setText(scores[7][0] + ": " + scores[7][1]);
+        highScoreValueLabel9.setText(scores[8][0] + ": " + scores[8][1]);
+        highScoreValueLabel10.setText(scores[9][0] + ": " + scores[9][1]);
+    }//GEN-LAST:event_mediumButtonActionPerformed
+
+    private void highScorePanelAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_highScorePanelAncestorAdded
+        String scores[][] = highScore.getMediumHighScores();
+        highScoreValueLabel1.setText(scores[0][0] + ": " + scores[0][1]);
+        highScoreValueLabel2.setText(scores[1][0] + ": " + scores[1][1]);
+        highScoreValueLabel3.setText(scores[2][0] + ": " + scores[2][1]);
+        highScoreValueLabel4.setText(scores[3][0] + ": " + scores[3][1]);
+        highScoreValueLabel5.setText(scores[4][0] + ": " + scores[4][1]);
+        highScoreValueLabel6.setText(scores[5][0] + ": " + scores[5][1]);
+        highScoreValueLabel7.setText(scores[6][0] + ": " + scores[6][1]);
+        highScoreValueLabel8.setText(scores[7][0] + ": " + scores[7][1]);
+        highScoreValueLabel9.setText(scores[8][0] + ": " + scores[8][1]);
+        highScoreValueLabel10.setText(scores[9][0] + ": " + scores[9][1]);
+    }//GEN-LAST:event_highScorePanelAncestorAdded
+
+    private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    SnakeWithPartner.mainFrame = new MainFrame();
+                    SnakeWithPartner.mainFrame.setVisible(true);
+                }
+            });
+            this.dispose();
+    }//GEN-LAST:event_mainMenuButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton easyButton;
+    private javax.swing.JButton hardButton;
     private javax.swing.JLabel highScore1;
     private javax.swing.JLabel highScore10;
     private javax.swing.JLabel highScore2;
@@ -202,14 +341,25 @@ public class HighScoresFrame extends javax.swing.JFrame {
     private javax.swing.JLabel highScore8;
     private javax.swing.JLabel highScore9;
     private javax.swing.JTextArea highScoreArea;
+    private javax.swing.JPanel highScorePanel;
+    private javax.swing.JLabel highScoreValueLabel1;
+    private javax.swing.JLabel highScoreValueLabel10;
+    private javax.swing.JLabel highScoreValueLabel2;
+    private javax.swing.JLabel highScoreValueLabel3;
+    private javax.swing.JLabel highScoreValueLabel4;
+    private javax.swing.JLabel highScoreValueLabel5;
+    private javax.swing.JLabel highScoreValueLabel6;
+    private javax.swing.JLabel highScoreValueLabel7;
+    private javax.swing.JLabel highScoreValueLabel8;
+    private javax.swing.JLabel highScoreValueLabel9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton mainMenuButton;
+    private javax.swing.JButton mediumButton;
     private java.awt.TextArea textArea1;
     // End of variables declaration//GEN-END:variables
 }

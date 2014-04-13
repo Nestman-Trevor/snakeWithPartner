@@ -23,40 +23,40 @@ public class HighScore implements Serializable {
 
     //Declares the array of High Scores
     private String easyHighScores[][] = {
-        {"Josh", "10000"},
-        {"Trevor", "2"},
-        {"Josh", "300"},
-        {"Erik", "4000"},
-        {"aGoodMan", "500"},
-        {"MyPuppy", "600"},
-        {"aPossummm", "700"},
-        {"Tim", "80"},
-        {"Air", "9000"},
-        {"Trevor", "10"}
+        {"Josh", "1400"},
+        {"Trevor", "1300"},
+        {"Josh", "1200"},
+        {"Erik", "1100"},
+        {"aGoodMan", "1000"},
+        {"MyPuppy", "900"},
+        {"aPossummm", "800"},
+        {"Tim", "700"},
+        {"Air", "600"},
+        {"Trevor", "500"}
     };
     private String mediumHighScores[][] = {
-        {"Simba", "10000"},
-        {"Jake", "20000"},
-        {"Nalla's Ex", "30000"},
-        {"Pigs", "40000"},
-        {"Tim", "50000"},
-        {"Sim", "60000"},
-        {"Kim", "70000"},
-        {"myRim", "80000"},
-        {"Dim", "90000"},
-        {"brainDead", "100000"}
+        {"Josh", "1400"},
+        {"Trevor", "1300"},
+        {"Josh", "1200"},
+        {"Erik", "1100"},
+        {"aGoodMan", "1000"},
+        {"MyPuppy", "900"},
+        {"aPossummm", "800"},
+        {"Tim", "700"},
+        {"Air", "600"},
+        {"Trevor", "500"}
     };
     private String hardHighScores[][] = {
-        {"H1N1", "10000"},
-        {"CommonCold", "2"},
-        {"BirdFlu", "300"},
-        {"Ebola", "4000"},
-        {"OldAge", "500"},
-        {"Spiders", "600"},
-        {"Josh", "700"},
-        {"2Hard4Me", "80"},
-        {"Potassium", "9000"},
-        {"where'sTheAnyKey?", "10"}
+        {"Josh", "1400"},
+        {"Trevor", "1300"},
+        {"Josh", "1200"},
+        {"Erik", "1100"},
+        {"aGoodMan", "1000"},
+        {"MyPuppy", "900"},
+        {"aPossummm", "800"},
+        {"Tim", "700"},
+        {"Air", "600"},
+        {"Trevor", "500"}
     };
 
     private String num = "12";
@@ -123,7 +123,7 @@ public class HighScore implements Serializable {
     }
 
     //Sorts high score list
-    public void addToHighScores(Player player) {
+    public boolean addToHighScores(Player player) {
 
         try {
             int i, j, temp = 0;
@@ -157,15 +157,16 @@ public class HighScore implements Serializable {
                         break;
                     default:
                         System.out.println("No difficulty");
-                        return;
+                        return false;
                 }
 
                 isHighScore = isHighScore(highScores, player.getScore());
 
                 if (!isHighScore) {
                     System.out.println("Not a high score.");
-                    return;
+                    return false;
                 }
+                
                 for (int k = 0; k < highScores.length; k++) {
                     newHighScores[k][0] = highScores[k][0];
                     newHighScores[k][1] = highScores[k][1];
@@ -190,42 +191,41 @@ public class HighScore implements Serializable {
                             easyHighScores[k][0] = newHighScores[k][0];
                             easyHighScores[k][1] = newHighScores[k][1];
                         }
-                        this.displayHighScoreInfo(easyHighScores, "Easy High Scores");
-                        break;
+                        return true;
                     case MEDIUM:
                         for (int k = 0; k < (newHighScores.length - 1); k++) {
                             mediumHighScores[k][0] = newHighScores[k][0];
                             mediumHighScores[k][1] = newHighScores[k][1];
                         }
-                        this.displayHighScoreInfo(mediumHighScores, "Medium High Scores");
-                        break;
+                        return true;
                     case HARD:
                         for (int k = 0; k < (newHighScores.length - 1); k++) {
                             hardHighScores[k][0] = newHighScores[k][0];
                             hardHighScores[k][1] = newHighScores[k][1];
                         }
-                        this.displayHighScoreInfo(hardHighScores, "Hard High Scores");
-                        break;
+                        return true;
                     default:
                         System.out.println("Invalid difficulty");
-                        return;
+                        return false;
                 }
             } else {
                 System.out.println("Not a valid score.");
+                return false;
             }
 
             //This next part is to test the displayHighScoreWithName() function
-            Scanner input = SnakeWithPartner.getInFile();
-            System.out.println("Do you want to view the high score's with your name? (\'y\' or \'n\'): ");
-            if (input.hasNext("y")) {
-                displayHighScoreWithName(player);
-            } else {
-                System.out.println("Thanks anyways!");
-            }
+//            Scanner input = SnakeWithPartner.getInFile();
+//            System.out.println("Do you want to view the high score's with your name? (\'y\' or \'n\'): ");
+//            if (input.hasNext("y")) {
+//                displayHighScoreWithName(player);
+//            } else {
+//                System.out.println("Thanks anyways!");
+//            }
         } catch (NumberFormatException numEx) {
             System.out.println("Error adding score to High Scores.\n"
                     + numEx.getMessage());
         }
+        return false;
     }
 
     private boolean isValidScore(int score) {

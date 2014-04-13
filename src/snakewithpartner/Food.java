@@ -33,10 +33,8 @@ public class Food implements Serializable {
 
     Food(Board board) {
         Random generator = SnakeWithPartner.getGenerator();
-        xFood = generator.nextInt(board.getWidth() - 2);
-        xFood += 1;
-        yFood = generator.nextInt(board.getHeight() - 2);
-        yFood += 1;
+        xFood = generator.nextInt(board.getWidth() - 1);
+        yFood = generator.nextInt(board.getHeight() - 1);
         System.out.println("food is at: x-" + xFood + " y-" + yFood);
     }
 

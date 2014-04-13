@@ -18,6 +18,7 @@ import snakewithpartner.frames.HelpMenuFrame;
 import snakewithpartner.frames.HighScoresFrame;
 import snakewithpartner.frames.MainFrame;
 import snakewithpartner.frames.PlayMenuFrame;
+import snakewithpartner.players.HighScore;
 
 /**
  *
@@ -42,6 +43,7 @@ public class SnakeWithPartner {
     private static MainMenuView mainMenu = new MainMenuView();
     private static PlayMenuView playMenu = new PlayMenuView();
     private static HelpMenuView helpMenu = new HelpMenuView();
+    private static HighScore highScore = new HighScore();
 
     public SnakeWithPartner() {
     }
@@ -65,6 +67,11 @@ public class SnakeWithPartner {
     public static HelpMenuView getHelpMenu() {
         return helpMenu;
     }
+
+    public static HighScore getHighScore() {
+        return highScore;
+    }
+    
 
     /**
      * @param args the command line arguments

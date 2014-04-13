@@ -15,6 +15,7 @@ import static snakewithpartner.enums.Difficulty.*;
 import snakewithpartner.enums.Direction;
 import snakewithpartner.frames.BoardFrame;
 import snakewithpartner.frames.GameOverFrame;
+import snakewithpartner.players.HighScore;
 import snakewithpartner.players.Player;
 
 /**
@@ -32,9 +33,11 @@ public class Game {
     Food food;
     Board board;
     BoardFrame boardFrame;
+    HighScore highScore;
 
     public Game(Player player) {
         this.player = player;
+        this.highScore = SnakeWithPartner.getHighScore();
     }
 
     public void initGame() {
@@ -106,11 +109,11 @@ public class Game {
     }
 
     public void checkBoundaryCollision() {
-        if ((snake.getxPosition() < 1) || (snake.getxPosition() > 48)) {
+        if ((snake.getxPosition() < 0) || (snake.getxPosition() > 49)) {
             endGame();
 
         }
-        if ((snake.getyPosition() < 1) || (snake.getyPosition() > 48)) {
+        if ((snake.getyPosition() < 0) || (snake.getyPosition() > 49)) {
             endGame();
         }
     }
@@ -125,11 +128,17 @@ public class Game {
     }
 
     public void endGame() {
+        boolean isHighScore = false;
+        
         System.out.println("Game Over");
         this.timer.stop();
         SnakeWithPartner.boardFrame.dispose();
         SnakeWithPartner.GameOverFrame = new GameOverFrame(player);
         SnakeWithPartner.GameOverFrame.setVisible(true);
+        isHighScore = highScore.addToHighScores(player);
+        if (isHighScore){
+          SnakeWithPartner.GameOverFrame.newHighScore();
+        }
         inGame = false;
         try {
             this.finalize();
